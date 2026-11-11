@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>京都大阪九日行</title>
+<meta name="description" content="2026/11/15–11/23 京都・宇治・姬路・大阪 九天八夜自助旅行行程">
+<meta name="theme-color" content="#b23a2b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f2ea; --paper:#fffdf9; --ink:#2b2522; --muted:#7a6f66; --line:#e6dccf;
+  --accent:#b23a2b; --accent-soft:#f6e1dc; --gold:#c98a1b; --gold-soft:#fbefd6;
+  --move:#3d6b8c; --move-soft:#e2edf4; --spot:#4b7a4a; --spot-soft:#e4efe1;
+  --food:#c0602a; --food-soft:#fae6d8; --hotel:#6c5596; --hotel-soft:#ece6f5;
+  --rest:#8a8078; --rest-soft:#efebe6; --flight:#b23a2b;
+  --shadow:0 1px 2px rgba(60,40,20,.06),0 4px 14px rgba(60,40,20,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1b1816; --paper:#25211e; --ink:#efe8df; --muted:#a69a8f; --line:#3a332e;
+    --accent:#e0705e; --accent-soft:#3d2622; --gold:#e3ac4a; --gold-soft:#3a2f1c;
+    --move:#7fb0d3; --move-soft:#1f2c36; --spot:#8fc28c; --spot-soft:#1f2d1f;
+    --food:#e89a68; --food-soft:#3a281c; --hotel:#b39de0; --hotel-soft:#2b2438;
+    --rest:#a69a8f; --rest-soft:#2d2825; --flight:#e0705e;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1b1816; --paper:#25211e; --ink:#efe8df; --muted:#a69a8f; --line:#3a332e;
+  --accent:#e0705e; --accent-soft:#3d2622; --gold:#e3ac4a; --gold-soft:#3a2f1c;
+  --move:#7fb0d3; --move-soft:#1f2c36; --spot:#8fc28c; --spot-soft:#1f2d1f;
+  --food:#e89a68; --food-soft:#3a281c; --hotel:#b39de0; --hotel-soft:#2b2438;
+  --rest:#a69a8f; --rest-soft:#2d2825; --flight:#e0705e;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+/* header */
+header.hero{padding:28px 0 14px}
+.hero .eyebrow{font-size:12px;letter-spacing:.2em;color:var(--accent);font-weight:700}
+.hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(26px,7vw,38px);line-height:1.2;margin:6px 0 6px}
+.hero p{margin:0;color:var(--muted);font-size:14px}
+.theme-btn{position:absolute;top:18px;right:16px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;width:36px;height:36px;font-size:16px;cursor:pointer}
+
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs .row{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;max-width:760px;margin:0 auto;scrollbar-width:none}
+.tabs .row::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:6px 10px;cursor:pointer;text-align:center;min-width:58px;font-family:inherit}
+.tab .d{display:block;font-weight:700;font-size:15px;line-height:1.2}
+.tab .w{display:block;font-size:11px;color:var(--muted)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab.on .w{color:#ffe6e0}
+.tab.has-flight::after{content:"✈";display:block;font-size:10px;line-height:1}
+.tab .today{display:block;font-size:10px;font-weight:700;color:var(--gold)}
+.tab.on .today{color:#ffe7a8}
+
+/* day header */
+.dayhead{padding:20px 0 6px}
+.dayhead .n{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.12em}
+.dayhead h2{font-family:"Noto Serif TC",serif;font-size:24px;margin:2px 0 4px;line-height:1.3}
+.dayhead .sum{color:var(--muted);font-size:14px}
+.dayhead .stay{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:13px;background:var(--hotel-soft);color:var(--hotel);padding:3px 10px;border-radius:999px;text-decoration:none}
+.daynav{display:flex;justify-content:space-between;gap:10px;margin:22px 0 8px}
+.daynav button{flex:1;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:10px;font:inherit;cursor:pointer}
+.daynav button:disabled{opacity:.35;cursor:default}
+
+/* alerts */
+.alert{display:flex;gap:12px;align-items:flex-start;background:var(--gold-soft);border:1.5px solid var(--gold);border-radius:14px;padding:12px 14px;margin:14px 0 4px}
+.alert .ic{font-size:22px;line-height:1.2}
+.alert b{display:block;font-size:16px}
+.alert .big{font-size:26px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
+.alert small{color:var(--muted);display:block;margin-top:2px}
+
+/* flight card */
+.flight{background:var(--paper);border:2px solid var(--flight);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.flight .top{background:var(--flight);color:#fff;padding:6px 14px;font-size:13px;font-weight:700;display:flex;justify-content:space-between}
+.flight .body{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:12px 14px;gap:8px}
+.flight .ap{font-size:12px;color:var(--muted)}
+.flight .code{font-size:24px;font-weight:700;letter-spacing:.05em}
+.flight .tm{font-size:22px;font-weight:700;color:var(--flight);font-variant-numeric:tabular-nums}
+.flight .mid{text-align:center;color:var(--muted);font-size:20px}
+.flight .r{text-align:right}
+
+/* timeline */
+.tl{list-style:none;margin:16px 0 0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:62px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.it{display:grid;grid-template-columns:52px 22px 1fr;gap:0 8px;margin-bottom:12px;position:relative}
+.it .time{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;font-size:14px;padding-top:9px;line-height:1.2}
+.it .time small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.it .dot{width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--c);margin:11px auto 0;position:relative;z-index:1}
+.it .card{background:var(--paper);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow);border-left:4px solid var(--c);min-width:0}
+.it .kind{display:inline-block;font-size:11px;font-weight:700;color:var(--c);background:var(--cs);border-radius:6px;padding:1px 7px;margin-right:6px;vertical-align:2px}
+.it .tag{display:inline-block;font-size:11px;font-weight:700;border:1px dashed var(--muted);color:var(--muted);border-radius:6px;padding:0 6px;margin-right:6px;vertical-align:2px}
+.it .ti{font-weight:700;font-size:15.5px;word-break:break-word}
+.it .note{color:var(--muted);font-size:13.5px;margin-top:3px;white-space:pre-line}
+.it .note strong{color:var(--accent)}
+.it .imp{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:2px 8px}
+.it.opt .card{background:transparent;border:1.5px dashed var(--line);border-left:4px dashed var(--c);box-shadow:none}
+.it.opt .ti{font-weight:500}
+.it.now .card{outline:2px solid var(--gold);outline-offset:2px}
+.it.now .dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px var(--gold-soft)}
+.it.flightrow .card{padding:0;border-left:none;background:none;box-shadow:none}
+.k-move{--c:var(--move);--cs:var(--move-soft)}
+.k-spot{--c:var(--spot);--cs:var(--spot-soft)}
+.k-food{--c:var(--food);--cs:var(--food-soft)}
+.k-hotel{--c:var(--hotel);--cs:var(--hotel-soft)}
+.k-rest{--c:var(--rest);--cs:var(--rest-soft)}
+.k-flight,.k-airport{--c:var(--flight);--cs:var(--accent-soft)}
+.it.k-airport .card{background:var(--gold-soft);border-left-color:var(--gold)}
+.it.k-airport .dot{border-color:var(--gold)}
+
+details.sec{margin-top:8px}
+details.sec summary{display:inline-flex;align-items:center;gap:4px;cursor:pointer;list-style:none;font-size:12.5px;font-weight:700;color:var(--muted);border:1px dashed var(--muted);border-radius:8px;padding:2px 9px;user-select:none}
+details.sec summary::-webkit-details-marker{display:none}
+details.sec summary::after{content:"▾";font-size:11px}
+details.sec[open] summary{color:var(--accent);border-color:var(--accent);border-style:solid}
+details.sec[open] summary::after{content:"▴"}
+details.sec dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:8px 0 0;padding:8px 10px;background:var(--bg);border-radius:10px;font-size:13.5px}
+details.sec dt{color:var(--muted)}
+details.sec dd{margin:0;font-weight:500;word-break:break-word}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--bg);color:var(--ink);line-height:1.3;max-width:100%}
+.chip:hover,.chip:active{border-color:var(--c,var(--accent));color:var(--c,var(--accent))}
+.chip .pin{font-size:12px}
+.chip.nav{background:var(--cs);border-color:transparent;color:var(--c)}
+
+/* info */
+details.info{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);margin:18px 0 0;overflow:hidden}
+details.info summary{cursor:pointer;padding:12px 14px;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+details.info summary::-webkit-details-marker{display:none}
+details.info summary::after{content:"＋";color:var(--muted)}
+details.info[open] summary::after{content:"－"}
+.info .grp{padding:0 14px 10px}
+.info h4{margin:6px 0 6px;font-size:13px;color:var(--accent);letter-spacing:.08em}
+.shop{padding:8px 0;border-top:1px solid var(--line)}
+.shop:first-of-type{border-top:none}
+.shop .nm{font-weight:500}
+.shop .hr{font-size:13px;color:var(--muted)}
+.shop .lk{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.shop .lk a{font-size:12.5px;text-decoration:none;border-radius:6px;padding:1px 8px;background:var(--bg);border:1px solid var(--line)}
+.shop .lk a.g{color:var(--move)}
+.shop .lk a.t{color:var(--food)}
+
+/* hotels */
+.hotel{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);padding:14px;margin:12px 0;border-left:4px solid var(--hotel)}
+.hotel .nm{font-weight:700;font-size:16px}
+.hotel .meta{color:var(--muted);font-size:13.5px;margin:4px 0 8px}
+.flights2{display:grid;gap:12px;margin-top:12px}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:12px;color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 40px}
+
+@media (max-width:420px){
+  .tl::before{left:52px}
+  .it{grid-template-columns:44px 18px 1fr;gap:0 6px}
+  .it .time{font-size:13px}
+  .flight .code{font-size:20px}.flight .tm{font-size:19px}
+}
+</style>
+</head>
+<body>
+<header class="hero wrap" style="position:relative">
+  <div class="eyebrow">2026 · 11 / 15 — 11 / 23</div>
+  <h1>京都・大阪 九天八夜</h1>
+  <p>京都 · 宇治 · 伏見 · 姬路 · 大阪｜點地點即可開啟 Google 地圖導航</p>
+  <button class="theme-btn" id="themeBtn" aria-label="切換深淺色">◐</button>
+</header>
+<nav class="tabs"><div class="row" id="tabs"></div></nav>
+<main class="wrap" id="main"></main>
+<footer class="wrap">京都・大阪 九天八夜｜時間皆為當地時間（日本 UTC+9，台灣 UTC+8）</footer>
+
+<script>
+/* ---------- 地圖連結 ---------- */
+const G = id => 'https://maps.app.goo.gl/' + id;
+const TB = p => 'https://tabelog.com/tw/' + p + '/';
+const HOTEL_KYOTO = ['琥珀 Apartment Hotel Kyoto', G('LZm5UpZWY5z6HNzu5')];
+const HOTEL_TANI = ['ドーミーイン大阪谷町', G('oSpLpB1HBNtJLC2k8')];
+const HOTEL_APA = ['APA 難波駅前タワー', G('uxz1xznSDTei2km26')];
+/* 私人資料：預設收合，點標籤才顯示 */
+const PRICE = {
+  kyoto:[['入住','11/15 – 11/19'],['房型','標準家庭房'],['價格','¥179,273（NT$ 36,735）']],
+  tani:[['入住','11/19 – 11/22'],['房型','日式雙床 ×2（含早餐）'],['價格','¥188,550（NT$ 38,636）']],
+  apa:[['入住','11/22 – 11/23'],['房型','標準雙人間（高樓層）、標準三人房｜禁煙'],['價格','¥53,460（NT$ 10,954）']]
+};
+
+/* k: airport 出發去機場 / flight 航班 / move 交通 / spot 景點 / food 用餐 / hotel 住宿 / rest 休息
+   p: 地點，字串＝Google 地圖搜尋關鍵字；[顯示名稱, 搜尋字或網址] */
+const DAYS = [
+{
+  date:'2026-11-15', md:'11/15', wd:'日', title:'抵達關西 → 京都', sum:'關西機場、京都、飯店、京都車站',
+  stay:HOTEL_KYOTO,
+  alert:{ic:'🚗', time:'05:30', head:'從家出發前往桃園機場 第一航廈', sub:'開車約 1 小時；早餐在機場解決'},
+  items:[
+    {t:'05:30',k:'airport',ti:'家 → 桃園機場 第一航廈',n:'開車約 1 小時',p:[['桃園機場 第一航廈','桃園國際機場 第一航廈']],nav:1},
+    {t:'',k:'food',ti:'早餐：在機場解決'},
+    {t:'09:20',e:'12:50',k:'flight',fl:{no:'星宇 JX822',from:'TPE',fromN:'桃園 第一航廈',dep:'09:20',to:'KIX',toN:'關西 第一航廈',arr:'12:50',date:'11/15(日)'},n:'午餐：飛機餐'},
+    {t:'~14:00',k:'spot',ti:'出關、拿行李、換 HARUKA 車票',sec:{l:'HARUKA 預訂資料',r:[['車次','14:14 關西機場 → 京都'],['金額','¥13,500'],['預訂編號','49369'],['認證號碼（4 碼）','0727'],['結帳信用卡','玉山熊本熊卡'],['領取車站','關西國際機場']]},n:'領票方式：\n1. 找到綠色售票機\n2. 選擇「領取預訂的車票」\n3. 選擇「JR-WEST ONLINE TRAIN RESERVATION」\n4. 放入預訂時使用的信用卡\n5. 輸入預訂時設定的認證號碼（4 碼，見下方 🔒 HARUKA 預訂資料）',p:[['關西機場 JR 站','関西空港駅']],links:[['領票方式說明','https://www.westjr.co.jp/global/tc/howto/train-reservation/receive/']]},
+    {t:'14:14',e:'15:34',k:'move',ti:'關西機場 → JR HARUKA → 京都車站',n:'已預訂 14:14 的車；沒趕上就搭下一班，後面順延 30 分鐘',p:[['京都車站','京都駅']],nav:1},
+    {t:'15:35',e:'16:00',k:'move',ti:'京都車站 → 地下鐵烏丸線 → 五條',p:[['五條站','五条駅 京都市営地下鉄']],nav:1},
+    {t:'16:00',e:'16:30',k:'hotel',ti:'飯店 Check In',sec:{l:'訂房資料',r:PRICE.kyoto},p:[HOTEL_KYOTO]},
+    {t:'16:30',e:'17:15',k:'spot',ti:'タキモト 名酒館·葡萄館 逛清酒店',n:'買完先回飯店放',p:[['タキモト 名酒館',G('H1Qu8HfJ3ytogM9MA')]]},
+    {t:'17:30',e:'17:45',k:'move',ti:'飯店 → 公車 → 京都車站',p:[['京都車站','京都駅']],nav:1},
+    {t:'17:50',e:'18:50',k:'food',ti:'晚餐：寿しのむさし 京都駅八条口店（迴轉壽司）',n:'到了先抽號碼牌',p:[['寿しのむさし 八条口店',G('TAXBAwmWnsmCYzDi8')],['備選：大起水産 京都タワーサンド',G('vrQZpTxFbajfnVEaA')]]},
+    {t:'18:50',e:'19:40',k:'spot',ti:'京都車站地下街 買麵包、看伴手禮',n:'麵包當隔天早餐',p:[['京都駅前地下街 Porta','京都駅前地下街ポルタ']]},
+    {t:'19:40',e:'20:15',k:'spot',ti:'京都車站 大階梯、空中徑路',n:'還有體力可改逛 AEON',p:[['京都車站 大階梯','京都駅ビル 大階段'],['空中徑路','京都駅ビル 空中径路'],['備選：AEON Mall KYOTO','イオンモールKYOTO']]},
+    {t:'20:15',e:'20:30',k:'move',ti:'京都車站 → 飯店',p:[HOTEL_KYOTO],nav:1},
+    {t:'晚上',k:'rest',ti:'飯店休息',imp:'隔天 06:30 出門'}
+  ],
+  info:[
+    {h:'超市',l:[
+      {n:'スーパーフレスコ 五条大橋店',hr:'24 小時',g:'GZ1JgkWKKT1gU6cdA'},
+      {n:'スーパーフレスコ 五条店',hr:'24 小時',g:'bzuTvDeqHS6R99Jm9'},
+      {n:'ハッピー六原',hr:'09:00–20:00｜應該是最便宜',g:'V5XTgi52dMuqjuBm6'}]},
+    {h:'美食',l:[
+      {n:'寿しのむさし 京都駅八条口店',hr:'10:30–21:45',g:'TAXBAwmWnsmCYzDi8',gr:'4.2',tb:'kyoto/A2601/A260101/26003088',tr:'3.46'},
+      {n:'大起水産回転寿司 京都タワーサンド店',hr:'11:00–23:00',g:'vrQZpTxFbajfnVEaA',gr:'3.8'},
+      {n:'京都拉麵小路',hr:'11:00–22:00',g:'QshWSpAmYDpWcyTN6'},
+      {n:'タキモト 名酒館·葡萄館（清酒專賣店）',hr:'10:00–19:00',g:'H1Qu8HfJ3ytogM9MA'}]}
+  ]
+},
+{
+  date:'2026-11-16', md:'11/16', wd:'一', title:'東山名剎巡禮', sum:'清水寺、青蓮院、知恩院、八坂神社、建仁寺、錦天滿宮、木屋町通',
+  stay:HOTEL_KYOTO,
+  items:[
+    {t:'06:30',k:'move',ti:'飯店 → 河原町五条 → 市巴士 80 號 → 清水道',p:[['河原町五条 巴士站','河原町五条 バス停'],['清水道 巴士站','清水道 バス停']],nav:1},
+    {t:'07:00',e:'08:30',k:'spot',ti:'清水坂 → 清水寺',p:['清水坂','清水寺']},
+    {t:'08:30',e:'09:15',k:'spot',ti:'三年坂（產寧坂）→ 二年坂 → 八坂塔',p:[['三年坂','産寧坂'],['二年坂','二寧坂'],['八坂塔','八坂の塔']]},
+    {t:'09:15',e:'10:05',k:'spot',opt:1,ti:'備選：高台寺',n:'不去可以改去建仁寺',p:['高台寺']},
+    {t:'09:15',e:'09:45',k:'move',ti:'清水道 → 市巴士 80 號 → 河原町五条 → 飯店',n:'或步行約 20 分鐘',p:[HOTEL_KYOTO],nav:1},
+    {t:'09:45',e:'11:15',k:'rest',ti:'回飯店休息'},
+    {t:'11:30',e:'12:30',k:'food',ti:'午餐：麺処 虵の目屋（拉麵）／ 麺喰金家（烏龍麵）',n:'開門就到，避免排隊',p:[['麺処 虵の目屋',G('psUC8jAzgLeUR6NQ9')],['麺喰金家',G('SCfqnFu3iPeZvkPF9')]]},
+    {t:'12:30',e:'13:00',k:'move',ti:'五条站 → 烏丸線 → 烏丸御池站 → 東西線 → 東山站',p:[['東山站','東山駅 京都市営地下鉄']],nav:1},
+    {t:'13:00',e:'15:20',k:'spot',ti:'青蓮院 → 知恩院 → 円山公園 → 八坂神社',p:[['青蓮院','青蓮院門跡'],'知恩院',['円山公園','円山公園 京都'],'八坂神社']},
+    {t:'15:20',e:'16:25',k:'spot',ti:'八坂神社 → 花見小路（順路）→ 建仁寺',imp:'建仁寺約 16:30 截止入場',p:[['花見小路','花見小路通'],'建仁寺']},
+    {t:'16:25',e:'16:50',k:'spot',ti:'甘泉堂 買伴手禮（水羊羹）',n:'週日公休',p:[['甘泉堂',G('Lr7FreQFgKm3JMdKA')]]},
+    {t:'17:00',e:'18:00',k:'food',ti:'晚餐：京都祇園とんかつ わだ福（炸豬排）',p:[['わだ福',G('yZRNh3YwH5ifMHm8')]]},
+    {t:'18:00',e:'19:30',k:'spot',ti:'京都河原町 → 錦天滿宮 → 木屋町通',n:'散步回飯店',p:[['錦天滿宮','錦天満宮'],['木屋町通','木屋町通 京都']]},
+    {t:'晚上',k:'rest',ti:'飯店休息'}
+  ],
+  info:[
+    {h:'伴手禮',l:[{n:'水羊羹 甘泉堂（和菓子）',hr:'10:30–19:00｜週日公休',g:'Lr7FreQFgKm3JMdKA'}]},
+    {h:'美食',l:[
+      {n:'麺処 虵の目屋（拉麵）',hr:'11:30–16:00；18:00–21:30',g:'psUC8jAzgLeUR6NQ9',gr:'4.2',tbu:'https://tabelog.com/kyoto/A2601/A260201/26035164/',tr:'3.66'},
+      {n:'麺喰金家（烏龍麵）',hr:'11:30–15:40；18:00–19:40｜週四、五公休',g:'SCfqnFu3iPeZvkPF9',gr:'4.6',tb:'kyoto/A2601/A260301/26024018',tr:'3.18'},
+      {n:'京都祇園とんかつ わだ福（炸豬排）',hr:'11:00–20:00',g:'yZRNh3YwH5ifMHm8',gr:'4.7',tb:'kyoto/A2601/A260301/26041134',tr:'3.38'}]}
+  ]
+},
+{
+  date:'2026-11-17', md:'11/17', wd:'二', title:'東寺・宇治・伏見', sum:'東寺、平等院鳳凰堂、朝霧橋、宇治上神社、伏見',
+  stay:HOTEL_KYOTO,
+  items:[
+    {t:'08:00',k:'move',ti:'飯店 → 東寺',p:['東寺'],nav:1},
+    {t:'08:30',e:'09:50',k:'spot',ti:'東寺',p:['東寺']},
+    {t:'09:50',e:'10:10',k:'move',ti:'東寺 → 京都車站',n:'步行約 15 分鐘',p:[['京都車站','京都駅']],nav:1},
+    {t:'10:10',e:'10:30',k:'spot',ti:'JR 京都伊勢丹 B1 買丸久小山園',n:'10:00 開門，可能限購或缺貨',p:[['JR 京都伊勢丹','ジェイアール京都伊勢丹']]},
+    {t:'10:35',e:'11:00',k:'move',ti:'京都車站 → JR 奈良線 → 宇治站',n:'快速約 17 分鐘、普通約 30 分鐘',p:[['JR 宇治站','JR宇治駅']],nav:1},
+    {t:'11:00',e:'11:10',k:'spot',ti:'中村藤吉 宇治本店 買鐵盒餅乾',n:'JR 宇治站旁，可分頭先去排午餐',p:[['中村藤吉 宇治本店','中村藤吉本店 宇治本店']],links:[['鐵盒餅乾','https://tokichi.jp/products/bk31']]},
+    {t:'11:10',e:'12:20',k:'food',ti:'午餐：しゅばく（蕎麥麵）',n:'11:10 排隊，11:30 開門',p:[['しゅばく',G('ZmNrnPfuXZYp74nP6')],['備選：宇治蕎麦 つばめ屋',G('92nfweqHe2Ufcf2r6')]]},
+    {t:'12:30',e:'14:30',k:'spot',ti:'平等院鳳凰堂',imp:'入場後先買鳳凰堂內部參觀券',p:['平等院']},
+    {t:'14:30',e:'15:30',k:'spot',ti:'朝霧橋 → 宇治神社 → 宇治上神社',p:['朝霧橋','宇治神社','宇治上神社']},
+    {t:'15:35',e:'16:30',k:'spot',ti:'源氏物語博物館',imp:'約 16:30 截止入館',p:[['源氏物語博物館','宇治市源氏物語ミュージアム']]},
+    {t:'16:45',e:'17:25',k:'spot',ti:'伊藤久右衛門（抹茶）本店',p:[['伊藤久右衛門 本店','伊藤久右衛門 本店・茶房']]},
+    {t:'17:35',e:'17:55',k:'move',ti:'宇治（京阪）→ 京阪宇治線 → 中書島',p:[['京阪宇治站','京阪 宇治駅'],['中書島站','中書島駅']],nav:1},
+    {t:'18:05',e:'19:15',k:'food',ti:'晚餐：Torisei 鳥せい 本店（燒鳥）',p:[['鳥せい 本店',G('cyf94XBgGjnWBixP6')]]},
+    {t:'',k:'spot',opt:1,ti:'備選：京都伏水酒蔵小路',n:'可去可不去；開到 22:00',p:[['伏水酒蔵小路',G('xCDiGjgYN4s27RKNA')]],links:[['參考文章','https://basil.idv.tw/blog/14028/fushimi-sake-village']]},
+    {t:'19:20',e:'19:45',k:'move',ti:'伏見桃山 → 京阪本線 → 清水五條',n:'搭普通或準急',p:[['伏見桃山站','伏見桃山駅'],['清水五條站','清水五条駅']],nav:1},
+    {t:'晚上',k:'rest',ti:'飯店休息',imp:'隔天 06:30 出門'}
+  ],
+  info:[
+    {h:'美食・宇治',l:[
+      {n:'しゅばく（蕎麥麵）',hr:'11:30–15:00｜週一、五公休',g:'ZmNrnPfuXZYp74nP6',gr:'4.3',tb:'kyoto/A2607/A260701/26004771',tr:'3.67'},
+      {n:'宇治蕎麦 つばめ屋（蕎麥麵）',hr:'11:15–17:00',g:'92nfweqHe2Ufcf2r6',gr:'4.2'}]},
+    {h:'美食・伏見',l:[
+      {n:'Torisei 鳥せい 本店',hr:'11:00–22:00｜週一公休',g:'cyf94XBgGjnWBixP6',gr:'4.2',tb:'kyoto/A2601/A260601/26001213',tr:'3.43'},
+      {n:'京都伏水酒蔵小路',hr:'11:00–22:00',g:'xCDiGjgYN4s27RKNA',gr:'4.2'}]}
+  ]
+},
+{
+  date:'2026-11-18', md:'11/18', wd:'三', title:'稻荷・二條城・南禪寺', sum:'伏見稻荷大社、東福寺(備選)、二條城、南禪寺、永観堂、松寿軒',
+  stay:HOTEL_KYOTO,
+  items:[
+    {t:'06:30',k:'move',ti:'飯店 → 清水五条站 → 京阪本線 → 伏見稻荷站',p:[['伏見稻荷站','伏見稲荷駅']],nav:1},
+    {t:'07:00',e:'08:30',k:'spot',ti:'伏見稻荷大社',n:'走到四ツ辻折返；要去東福寺的話 08:15 離開',p:[['伏見稻荷大社','伏見稲荷大社'],['四ツ辻','伏見稲荷大社 四ツ辻']]},
+    {t:'08:40',e:'09:30',k:'spot',tag:'方案 A：去東福寺',opt:1,ti:'東福寺（通天橋）',n:'伏見稻荷站 → 京阪本線 → 東福寺站（2 站）；08:30 開門',p:['東福寺']},
+    {t:'09:40',e:'10:10',k:'move',tag:'方案 A',opt:1,ti:'東福寺站 → 京阪本線 → 三条站 → 東西線 → 二条城前站',n:'不回飯店，直接到二條城',p:[['二条城前站','二条城前駅']],nav:1},
+    {t:'08:30',e:'08:55',k:'move',tag:'方案 B：不去東福寺',ti:'伏見稻荷站 → 京阪本線 → 清水五条站 → 飯店',p:[HOTEL_KYOTO],nav:1},
+    {t:'08:55',e:'09:20',k:'rest',tag:'方案 B',ti:'飯店休息、吃早餐'},
+    {t:'09:20',e:'09:50',k:'move',tag:'方案 B',ti:'飯店 → 五条站 → 烏丸線 → 烏丸御池站 → 東西線 → 二条城前站',p:[['二条城前站','二条城前駅']],nav:1},
+    {t:'09:50',e:'10:50',k:'spot',ti:'東大手門入城 → 唐門 → 二之丸御殿 → 二之丸庭園',n:'方案 A 10:10 才入城，二之丸要看快一點',p:[['二條城 東大手門','二条城 東大手門'],['二之丸御殿','二条城 二の丸御殿']]},
+    {t:'11:00',e:'11:40',k:'spot',ti:'本丸御殿',imp:'⏰ 已預約 11:00 參觀',p:[['本丸御殿','二条城 本丸御殿']]},
+    {t:'11:40',e:'12:10',k:'spot',ti:'本丸庭園 → 天守閣跡 → 清流園 → 東大手門出城',p:[['清流園','二条城 清流園']]},
+    {t:'12:10',e:'12:25',k:'move',ti:'二条城 → 新風館',n:'步行約 15 分鐘或地鐵一站',p:['新風館'],nav:1},
+    {t:'12:25',e:'13:25',k:'food',ti:'午餐：天ぷら 天寅 新風館店（天婦羅）',p:[['天寅 新風館店',G('GdSMwM9tiMtExJCs7')]]},
+    {t:'13:25',e:'13:45',k:'move',ti:'烏丸御池站 → 東西線 → 蹴上站',p:[['蹴上站','蹴上駅']],nav:1},
+    {t:'13:45',e:'14:45',k:'spot',ti:'蹴上 → 南禪寺',p:[['蹴上傾斜鐵道','蹴上インクライン'],['南禪寺','南禅寺'],['水路閣','南禅寺 水路閣']]},
+    {t:'14:55',e:'16:00',k:'spot',ti:'永観堂',imp:'約 16:00 截止入場',p:[['永観堂','永観堂 禅林寺']]},
+    {t:'16:00',e:'16:50',k:'move',ti:'永観堂 → 松寿軒',n:'公車到四条河原町再步行約 15 分鐘，或搭計程車',p:[['松寿軒',G('wh74vaNpve228pke9')]],nav:1},
+    {t:'16:50',e:'17:05',k:'spot',ti:'京菓子司 松寿軒（和菓子）',imp:'18:00 關門，建議事先預約',p:[['松寿軒',G('wh74vaNpve228pke9')]]},
+    {t:'17:05',e:'17:20',k:'move',ti:'松寿軒 → 步行 → 麵屋 豬一 離れ',p:[['麵屋 豬一 離れ',G('cDpWBxVgTwZqkXfD8')]],nav:1},
+    {t:'17:20',e:'18:30',k:'food',ti:'晚餐：麵屋 豬一 離れ（拉麵）',n:'17:20 排隊，17:30 開門',p:[['麵屋 豬一 離れ',G('cDpWBxVgTwZqkXfD8')]]},
+    {t:'18:30',e:'18:45',k:'move',ti:'步行回飯店',p:[HOTEL_KYOTO],nav:1},
+    {t:'晚上',k:'rest',ti:'飯店休息'}
+  ],
+  info:[
+    {h:'伴手禮・麵包',l:[
+      {n:'Flip up!（麵包店）',hr:'07:00–18:00',g:'StD7fDbkGv4f4reK8',gr:'4.5'},
+      {n:'fiveran（麵包店）',hr:'09:00–18:00',g:'tieVVUhf9ThKcHoX8',gr:'4.2'},
+      {n:'京菓子司 松寿軒（和菓子）',hr:'10:00–18:00｜週日、一公休',g:'wh74vaNpve228pke9',gr:'4.6',tb:'kyoto/A2601/A260301/26009387',tr:'3.67'}]},
+    {h:'美食',l:[
+      {n:'天ぷら 天寅 新風館店（天婦羅）',hr:'11:00–22:00',g:'GdSMwM9tiMtExJCs7',gr:'3.9',tb:'kyoto/A2601/A260202/26034404',tr:'3.43'},
+      {n:'天ぷらすし海鮮米福 四条烏丸店（天婦羅）',hr:'11:30–15:00；17:00–23:00｜推薦午間套餐',g:'h9iKvtbP4PR8dXEc8',gr:'4.3',tb:'kyoto/A2601/A260201/26041570',tr:'3.46'},
+      {n:'麵屋 豬一 離れ（拉麵）',hr:'11:00–14:30；17:30–21:00',g:'cDpWBxVgTwZqkXfD8',gr:'4.4',tb:'kyoto/A2601/A260201/26029810',tr:'3.67'}]}
+  ]
+},
+{
+  date:'2026-11-19', md:'11/19', wd:'四', title:'告別京都 → 大阪', sum:'下鴨神社、三十三間堂、東本願寺、西本願寺、大阪天滿宮、大阪城周邊',
+  stay:HOTEL_TANI,
+  items:[
+    {t:'08:00',k:'hotel',ti:'退房（行李寄放飯店）',p:[HOTEL_KYOTO]},
+    {t:'08:00',k:'move',ti:'飯店 → 清水五條 → 京阪本線 → 出町柳',n:'車程約 10 分鐘',p:[['出町柳站','出町柳駅']],nav:1},
+    {t:'08:30',e:'08:50',k:'spot',ti:'出町ふたば 買豆大福',n:'08:30 開門就到，排隊最短',p:['出町ふたば']},
+    {t:'08:50',e:'09:50',k:'spot',ti:'糺之森 → 下鴨神社',p:[['糺之森','糺の森'],'下鴨神社']},
+    {t:'09:50',e:'10:25',k:'move',ti:'出町柳 → 京阪本線 → 七條 → 三十三間堂',p:['三十三間堂'],nav:1},
+    {t:'10:25',e:'11:15',k:'spot',ti:'三十三間堂',n:'雨天備案：京都國立博物館',p:['三十三間堂',['京都國立博物館','京都国立博物館']]},
+    {t:'11:15',e:'11:40',k:'move',ti:'三十三間堂 → 東本願寺',n:'沿七条通步行約 25 分鐘或搭公車',p:['東本願寺'],nav:1},
+    {t:'11:40',e:'12:50',k:'spot',ti:'東本願寺 → 西本願寺',n:'東本願寺順路，時間不夠可跳過',p:['東本願寺','西本願寺']},
+    {t:'12:50',e:'13:00',k:'move',ti:'西本願寺 → 吟醸らーめん久保田 本店',p:[['久保田 本店',G('uxzZtA8QRCBdUEFn6')]],nav:1},
+    {t:'13:00',e:'14:00',k:'food',ti:'午餐：吟醸らーめん久保田 本店（拉麵）',imp:'久保田 14:30 關門',p:[['久保田 本店',G('uxzZtA8QRCBdUEFn6')],['備選：金沢まいもん寿司 Porta',G('iU6HdkVeuutAAmZS7')]]},
+    {t:'14:00',e:'14:25',k:'move',ti:'久保田 → 飯店 領行李',n:'步行約 25 分鐘，或搭公車、計程車',p:[HOTEL_KYOTO],nav:1},
+    {t:'14:25',e:'15:35',k:'move',ti:'清水五條 → 七條 → 京阪特急（淀屋橋）→ 天滿橋 → 谷町線 → 谷町四丁目',p:[['天滿橋站','天満橋駅'],['谷町四丁目站','谷町四丁目駅'],HOTEL_TANI],nav:1},
+    {t:'15:35',e:'16:00',k:'hotel',ti:'飯店 Check In、放行李、稍作休息',sec:{l:'訂房資料',r:PRICE.tani},p:[HOTEL_TANI]},
+    {t:'16:00',e:'16:15',k:'move',ti:'谷町四丁目 → 谷町線 → 南森町',p:[['南森町站','南森町駅']],nav:1},
+    {t:'16:15',e:'17:10',k:'spot',ti:'大阪天滿宮 → 天神橋筋商店街',imp:'先去天滿宮，約 17:00 關門',p:[['大阪天滿宮','大阪天満宮'],['天神橋筋商店街','天神橋筋商店街']]},
+    {t:'17:10',e:'17:30',k:'move',ti:'南森町 → 本町（或堺筋本町）',p:[['本町站','本町駅']],nav:1},
+    {t:'17:30',e:'19:00',k:'food',ti:'晚餐：鮨 酒 肴 杉玉 本町（居酒屋）',p:[['杉玉 本町',G('EkMAAvtteepXpRSd7')]]},
+    {t:'19:00',e:'19:20',k:'move',ti:'本町 → 中央線 → 谷町四丁目',p:[['谷町四丁目站','谷町四丁目駅']],nav:1},
+    {t:'19:20',e:'20:30',k:'spot',opt:1,ti:'備選：大阪城 免費景點 夜間散步',n:'可去可不去，11/22 早上還會來',p:[['大阪城公園','大阪城公園']]},
+    {t:'晚上',k:'rest',ti:'飯店休息'}
+  ],
+  info:[
+    {h:'超市',l:[
+      {n:'デイリーカナートイズミヤ 法円坂店',hr:'09:00–24:00',g:'3F51dbBTosNMCnWRA'},
+      {n:'KOHYO 超市 內本町店',hr:'07:00–23:00',g:'5PCozZGopbLopZaR8'}]},
+    {h:'美食',l:[
+      {n:'市川屋珈琲',hr:'08:00–17:00',g:'frHUaNNkLwypXkpr8',gr:'4.5',tb:'kyoto/A2601/A260301/26026585',tr:'3.68'},
+      {n:'吟醸らーめん久保田 本店（拉麵）',hr:'11:00–14:30；18:00–22:00',g:'uxzZtA8QRCBdUEFn6',gr:'4.4',tb:'kyoto/A2601/A260101/26004660',tr:'3.73'},
+      {n:'金沢まいもん寿司 京都駅ポルタ店',hr:'11:00–22:00',g:'iU6HdkVeuutAAmZS7',gr:'4.1',tb:'kyoto/A2601/A260201/26030436',tr:'3.39'},
+      {n:'鮨 酒 肴 杉玉 本町（居酒屋）',hr:'11:00–14:30；17:00–23:00',g:'EkMAAvtteepXpRSd7',gr:'4.1',tb:'osaka/A2701/A270106/27135027',tr:'3.45'}]}
+  ]
+},
+{
+  date:'2026-11-20', md:'11/20', wd:'五', title:'姬路一日遊', sum:'姬路城、好古園',
+  stay:HOTEL_TANI,
+  items:[
+    {t:'06:30',e:'09:30',k:'food',ti:'早餐：飯店早餐（13F）'},
+    {t:'08:30',k:'move',ti:'谷町四丁目 → 谷町線 → 東梅田 → 步行轉乘 → JR 大阪站 → JR 新快速 → 姬路站',n:'預計 10:20–10:33 到姬路站',p:[['東梅田站','東梅田駅'],['JR 大阪站','大阪駅'],['姬路站','姫路駅']],nav:1},
+    {t:'10:50',e:'11:50',k:'food',ti:'午餐：炭焼あなご やま義（星鰻）',n:'10:50 排隊，11:00 開門',p:[['やま義',G('48f1pmimJUwdJHHq5')],['備選：まねき本店',G('WEKqr45FQ1HXTVAe6')]]},
+    {t:'11:50',e:'12:05',k:'move',ti:'步行到姬路城',p:[['姬路城','姫路城']],nav:1},
+    {t:'12:05',e:'16:00',k:'spot',ti:'姬路城、好古園',p:[['姬路城','姫路城'],'好古園']},
+    {t:'16:00',e:'16:25',k:'move',ti:'好古園 → 姬路站',n:'步行約 20 分鐘或搭公車',p:[['姬路站','姫路駅']],nav:1},
+    {t:'16:25',e:'16:55',k:'food',ti:'姫路タコピィ（明石燒）',n:'姬路站地下街，先吃少一點',p:[['姫路タコピィ',G('zNsFDAx6ucoxbzyg8')]]},
+    {t:'16:55',e:'18:00',k:'food',ti:'晚餐：お好み焼 ボナンザ（御好燒）',n:'16:55 排隊，17:00 開門',p:[['ボナンザ',G('gGMKSU4n8ACV96sy6')]]},
+    {t:'18:15',e:'19:20',k:'move',ti:'姬路站 → JR 新快速 → JR 大阪站（東梅田）',p:[['JR 大阪站','大阪駅']],nav:1},
+    {t:'19:20',e:'20:00',k:'spot',opt:1,ti:'備選：梅田逛街散步',n:'百貨多半 20:00 關，11/22 還會再來',p:[['梅田','梅田 大阪']]},
+    {t:'~20:00',k:'move',ti:'東梅田 → 谷町線 → 谷町四丁目',n:'約 20 分鐘',p:[HOTEL_TANI],nav:1},
+    {t:'晚上',k:'rest',ti:'飯店休息'}
+  ],
+  info:[
+    {h:'美食・姬路',l:[
+      {n:'Bakery 燈 Lamp',hr:'10:00–18:00｜週四公休',g:'QYupeZCVP339Ed4m9',gr:'4.3',tb:'hyogo/A2805/A280501/28026604',tr:'3.64'},
+      {n:'立ち喰い寿司 魚路（壽司）',hr:'11:30–14:00；17:00–21:00｜週日公休',g:'PijycgKJuRdAAkbRA',gr:'4.4',tb:'hyogo/A2805/A280501/28036006',tr:'3.54'},
+      {n:'炭焼あなご やま義（星鰻）',hr:'11:00–20:00',g:'48f1pmimJUwdJHHq5',gr:'3.7',tb:'hyogo/A2805/A280501/28034320',tr:'3.49'},
+      {n:'たけだの穴子めし まねき本店（星鰻）',hr:'09:00–20:00',g:'WEKqr45FQ1HXTVAe6',gr:'4.3',tb:'hyogo/A2805/A280501/28058232',tr:'3.46'},
+      {n:'姫路タコピィ（明石燒）',hr:'10:00–20:00',g:'zNsFDAx6ucoxbzyg8',gr:'3.9',tb:'hyogo/A2805/A280501/28028954',tr:'3.49'},
+      {n:'お好み焼 ボナンザ（御好燒）',hr:'11:00–15:00；17:00–20:00｜週一公休',g:'gGMKSU4n8ACV96sy6',gr:'3.7',tb:'hyogo/A2805/A280501/28006568',tr:'3.45'}]}
+  ]
+},
+{
+  date:'2026-11-21', md:'11/21', wd:'六', title:'天王寺・難波・御堂筋', sum:'四天王寺古董市集、天王寺、通天閣、道頓堀、御堂筋銀杏大道、本町',
+  stay:HOTEL_TANI,
+  items:[
+    {t:'06:30',e:'09:30',k:'food',ti:'早餐：飯店早餐（13F）'},
+    {t:'08:30',k:'move',ti:'谷町四丁目站 → 谷町線 → 四天王寺前夕陽丘站 → 四天王寺',n:'直達僅需 6 分鐘；4 號出口步行 5 分鐘',p:[['四天王寺前夕陽丘站','四天王寺前夕陽ヶ丘駅']],nav:1},
+    {t:'08:50',e:'11:10',k:'spot',ti:'四天王寺 古董市集（大師會）、寺內參觀',p:['四天王寺']},
+    {t:'11:10',e:'12:30',k:'food',ti:'午餐：四天王寺 はやうち（蕎麥麵）',n:'11:10 排隊，11:30 開門',p:[['はやうち',G('RxjVWkkbEVo375XG9')],['備選：寿し割烹 魚市',G('SWvH1WEWmKeMeWWd6')]]},
+    {t:'12:30',e:'12:50',k:'move',ti:'四天王寺 → 步行 → 天王寺站',p:[['天王寺站','天王寺駅']],nav:1},
+    {t:'12:50',e:'13:50',k:'spot',ti:'天王寺 逛街',n:'不上阿倍野 HARUKAS 展望台',p:[['阿倍野 HARUKAS','あべのハルカス'],['天王寺 MIO','天王寺ミオ']],links:[['HARUKAS 介紹','https://tw.wamazing.com/media/article/a-1042/']]},
+    {t:'13:50',e:'14:50',k:'spot',ti:'天王寺公園（Ten-Shiba）→ 新世界・通天閣',n:'通天閣只看外觀',p:[['Ten-Shiba','てんしば'],['通天閣','通天閣']]},
+    {t:'14:50',e:'15:05',k:'move',ti:'動物園前站 → 御堂筋線 → 難波站',n:'2 站、約 4 分鐘',p:[['動物園前站','動物園前駅'],['難波站','なんば駅 御堂筋線']],nav:1},
+    {t:'15:05',e:'16:20',k:'spot',ti:'難波逛街：難波 CITY（Workman）、Montbell',n:'備選：おはぎ 玉製家（可能已賣完）',p:[['難波 CITY','なんばCITY'],['Montbell 難波','モンベル なんば'],['備選：おはぎ 玉製家',G('HKPPHrqSpBVyQ5s3A')]]},
+    {t:'16:20',e:'17:00',k:'spot',ti:'御堂筋難波段 拍銀杏 → 道頓堀逛街',imp:'約 16:50 日落，銀杏趁天黑前拍',p:[['道頓堀','道頓堀']]},
+    {t:'17:00',e:'18:05',k:'spot',ti:'御堂筋銀杏大道 散步 → 心齋橋 → 一路走到本町',n:'天黑後看御堂筋點燈',imp:'⏰ 18:05 前到本町站',p:[['御堂筋','御堂筋 心斎橋'],['心齋橋','心斎橋筋商店街'],['本町站','本町駅']]},
+    {t:'18:05',e:'18:20',k:'move',ti:'本町站 → 中央線 → 谷町四丁目站 → 步行回飯店',n:'2 站、約 5 分鐘',p:[HOTEL_TANI],nav:1},
+    {t:'18:20',e:'18:30',k:'hotel',ti:'回飯店放行李和戰利品',p:[HOTEL_TANI]},
+    {t:'18:30',e:'18:50',k:'move',ti:'飯店 → 步行 → 鳥貴族 本町店',n:'步行約 20 分鐘',imp:'18:50 抵達，比預約時間提早 10 分鐘',p:[['鳥貴族 本町店',G('4zm6xMYoB79SWAEA7')]],nav:1},
+    {t:'19:00',e:'21:00',k:'food',ti:'晚餐：鳥貴族 本町店（燒鳥吃到飽）',imp:'⏰ 已預約 19:00',p:[['鳥貴族 本町店',G('4zm6xMYoB79SWAEA7')]]},
+    {t:'21:00',e:'21:20',k:'move',ti:'走回飯店',n:'或搭中央線 2 站',p:[HOTEL_TANI],nav:1},
+    {t:'晚上',k:'rest',ti:'飯店休息'}
+  ],
+  info:[
+    {h:'美食',l:[
+      {n:'四天王寺 はやうち（蕎麥麵）',hr:'11:30–15:00；17:00–20:30',g:'RxjVWkkbEVo375XG9',gr:'4.4',tb:'osaka/A2701/A270203/27049805',tr:'3.68'},
+      {n:'寿し割烹 魚市 あべのアポロビル本店',hr:'11:00–22:00',g:'SWvH1WEWmKeMeWWd6',gr:'4.2',tb:'osaka/A2701/A270203/27002845',tr:'3.49'},
+      {n:'ビアンシュール（麵包店）',hr:'08:00–20:00',g:'jsxYdVoDQCwomLAXA',gr:'4.0',tb:'osaka/A2701/A270203/27000545',tr:'3.66'},
+      {n:'ブーランジュリー タカギ（麵包店）',hr:'08:00–18:00｜週一、日公休',g:'QrdFRDXXu8buL6xF6',gr:'4.0',tb:'osaka/A2701/A270102/27002376',tr:'3.74'},
+      {n:'おはぎ 玉製家（紅豆麻糬）',hr:'14:00–18:30｜週三、四、日公休',g:'HKPPHrqSpBVyQ5s3A',gr:'4.2',tb:'osaka/A2701/A270202/27001576',tr:'3.76'},
+      {n:'鳥貴族 本町店',hr:'17:00–01:00｜已預約 19:00 吃到飽',g:'4zm6xMYoB79SWAEA7'}]},
+    {h:'伴手禮',l:[{n:'CANELÉ du JAPON 長堀店（可麗露）',g:'N29anZB7LXmW8RU7A'}]}
+  ]
+},
+{
+  date:'2026-11-22', md:'11/22', wd:'日', title:'大阪城・中之島・梅田', sum:'大阪城公園、中之島、大阪中之島美術館、Workman、梅田、難波',
+  stay:HOTEL_APA,
+  items:[
+    {t:'06:30',e:'09:30',k:'food',ti:'早餐：飯店早餐（13F）'},
+    {t:'08:45',k:'hotel',ti:'退房 & 行李寄放櫃檯 → 步行前往大阪城公園',n:'步行約 12 分鐘',p:[['大阪城公園','大阪城公園']],nav:1},
+    {t:'09:00',e:'10:30',k:'spot',ti:'大阪城公園',n:'散步、拍天守閣；逛完回原飯店領行李',p:[['大阪城天守閣','大阪城天守閣']]},
+    {t:'10:45',e:'11:20',k:'move',ti:'谷町四丁目 → 谷町線 → 谷町九丁目 → 千日前線 → 難波站',n:'出站後往西側（JR 難波方向）步行至新飯店',p:[HOTEL_APA],nav:1},
+    {t:'11:20',e:'11:40',k:'hotel',ti:'APA Hotel 預辦 Check In & 寄放行李',n:'自助機辦理手續；15:00 後才能進房',sec:{l:'訂房資料',r:PRICE.apa},p:[HOTEL_APA]},
+    {t:'11:55',e:'12:55',k:'food',ti:'午餐：なにわ麺次郎（拉麵）',p:[['なにわ麺次郎',G('NA3yG4wxWuA7rFs58')],['備選：麺屋 丈六',G('x1gK8sqo6Xu8AfDF7')]]},
+    {t:'13:00',e:'13:20',k:'move',ti:'難波站 → 四橋線 → 肥後橋站 → 中之島',n:'3 站、約 6 分鐘；3 或 4 號出口步行 5–8 分鐘',p:[['肥後橋站','肥後橋駅']],nav:1},
+    {t:'13:20',e:'15:15',k:'spot',ti:'大阪中之島美術館 → 中之島河畔散步 → 走到北濱站',n:'拍戶外巨大貓咪雕塑《SHIP\'S CAT》，沿河岸欣賞中央公會堂',p:[['中之島美術館','大阪中之島美術館'],['中央公會堂','大阪市中央公会堂'],['北濱站','北浜駅'],['備選：Cacaotier Gokan',G('MN39LuojyBLjF3S99')],['備選：北浜レトロ',G('4UZ6HqfXbwrsnv6q6')]]},
+    {t:'15:15',e:'15:45',k:'move',ti:'北濱站 → 堺筋線（直通阪急千里線）→ 淡路站 → Workman Plus',imp:'要搭直通阪急的班次',n:'車程約 13 分鐘；阪急淡路東口步行 10 分鐘',p:[['Workman Plus 東淀川菅原店',G('n7QkGy7G43RvJHE38')]],nav:1},
+    {t:'15:45',e:'16:55',k:'spot',ti:'Workman Plus 東淀川菅原店',n:'11/21 在難波 CITY 買齊的話可跳過，從北濱直接去梅田',p:[['Workman Plus',G('n7QkGy7G43RvJHE38')]]},
+    {t:'16:55',e:'17:20',k:'move',ti:'阪急淡路站 → 阪急京都線 → 大阪梅田站',n:'一班車直達，約 10 分鐘；或 JR 淡路站 → JR おおさか東線 → 大阪站',p:[['阪急 大阪梅田站','大阪梅田駅 阪急']],nav:1},
+    {t:'17:20',e:'18:05',k:'spot',ti:'梅田商圈逛街',n:'先逛無印良品和 Uniqlo；阪急百貨、LUCUA、Grand Front Osaka',imp:'⏰ 18:05 前離開梅田',p:[['阪急百貨','阪急うめだ本店'],['LUCUA','ルクア大阪'],['Grand Front Osaka','グランフロント大阪']]},
+    {t:'18:05',e:'18:25',k:'move',ti:'梅田站 → 御堂筋線 → 難波站 → 步行回飯店',n:'4 站、約 9 分鐘；出站往西側（JR 難波方向）',p:[HOTEL_APA],nav:1},
+    {t:'18:25',e:'18:35',k:'hotel',ti:'回飯店：領取寄放的行李、進房放行李和戰利品',n:'15:00 後就能進房',p:[HOTEL_APA]},
+    {t:'18:35',e:'18:50',k:'move',ti:'飯店 → 步行 → 鮨難波中',imp:'18:50 抵達，比訂位時間提早 10 分鐘',p:[['鮨難波中',G('DQGnj8LcTFboSpnN7')]],nav:1},
+    {t:'19:00',k:'food',ti:'晚餐：鮨難波中（壽司）',imp:'⏰ 已訂位 19:00（5 位）',sec:{l:'訂位資料',r:[['預訂日期','2026-11-22（日）19:00 JST'],['人數','5 位'],['預訂者姓名','LEE CHENGJU'],['免費取消期限','2026-11-21 05:59（JST）前']]},p:[['鮨難波中',G('DQGnj8LcTFboSpnN7')],['備選：魚心 南難波店',G('1JWhECnykwWJJGHs8')],['備選：寿司のたぬき',G('ApZQUfsH4tLcsVYN6')],['備選：寿司 晴々',G('adzY91W6WwvkBGTe6')]]},
+    {t:'20:30',e:'21:15',k:'spot',opt:1,ti:'備選：難波商圈 / 道頓堀逛街散步',n:'可去可不去，11/21 已逛過',p:['道頓堀']},
+    {t:'21:15',e:'21:25',k:'move',ti:'步行回飯店',p:[HOTEL_APA],nav:1},
+    {t:'晚上',k:'rest',ti:'飯店休息、整理行李',imp:'隔天 07:40 前退房出發去機場'}
+  ],
+  info:[
+    {h:'超市',l:[{n:'LIFE 中央廣場 難波店',hr:'09:00–24:00',g:'LigCpRRP1uXfP68j7'}]},
+    {h:'美食',l:[
+      {n:'鮨難波中（壽司）',hr:'已訂位 11/22 19:00',g:'DQGnj8LcTFboSpnN7',gr:'4.8',tb:'osaka/A2701/A270206/27152704',tr:'3.29'},
+      {n:'なにわ麺次郎（拉麵）',hr:'11:00–22:00',g:'NA3yG4wxWuA7rFs58',gr:'4.2',tb:'osaka/A2701/A270202/27112089',tr:'3.71'},
+      {n:'麺屋 丈六（拉麵）',hr:'11:30–15:00；18:00–21:00｜週三公休',g:'x1gK8sqo6Xu8AfDF7',gr:'3.8',tb:'osaka/A2701/A270202/27084754',tr:'3.73'},
+      {n:'元祖ぶっち切り寿司 魚心南 難波店',hr:'11:30–23:00',g:'1JWhECnykwWJJGHs8',gr:'4.2',tb:'osaka/A2701/A270202/27001943',tr:'3.43'},
+      {n:'寿司のたぬき 千日前店',hr:'12:00–翌 08:30',g:'ApZQUfsH4tLcsVYN6',gr:'4.0',tb:'osaka/A2701/A270202/27152793',tr:'3.33'},
+      {n:'寿司 晴々',hr:'11:00–23:00',g:'adzY91W6WwvkBGTe6',gr:'4.6',tb:'osaka/A2701/A270202/27157489',tr:'3.09'},
+      {n:'とんかつニューベイブ 難波店（炸豬排）',hr:'11:00–21:30',g:'NWKq55fGYMoRjqwC6',gr:'4.7',tb:'osaka/A2701/A270202/27141021',tr:'3.52'},
+      {n:'大阪とんかつ 道頓堀本店（炸豬排）',hr:'11:00–21:30',g:'Why1KsccFhZAmojo9',gr:'3.9',tb:'osaka/A2701/A270202/27128646',tr:'3.47'}]},
+    {h:'咖啡・甜點',l:[
+      {n:'Arabiya coffee（咖啡店）',hr:'10:00–19:00',g:'UB32oedXe2fqgdrp6',gr:'4.2',tb:'osaka/A2701/A270202/27001511',tr:'3.67'},
+      {n:'サロン・ド・テ アルション 法善寺本店',hr:'11:00–20:00｜週一公休',g:'JrZ6puPGVQPnrR1t5',gr:'4.3',tb:'osaka/A2701/A270202/27001538',tr:'3.7'},
+      {n:'Cacaotier Gokan 高麗橋本店',hr:'10:00–19:00',g:'MN39LuojyBLjF3S99',gr:'4.3',tb:'osaka/A2701/A270102/27089982',tr:'3.73'},
+      {n:'北浜レトロ（下午茶）',hr:'11:00–19:00',g:'4UZ6HqfXbwrsnv6q6',gr:'4.3',tb:'osaka/A2701/A270102/27000121',tr:'3.68'}]}
+  ]
+},
+{
+  date:'2026-11-23', md:'11/23', wd:'一', title:'關西 → 台北', sum:'關西機場、回台北',
+  alert:{ic:'🧳', time:'07:40', head:'退房出發 → 步行到 OCAT 搭 08:00 利木津巴士往關西機場', sub:'步行約 4 分鐘；提早到買票排隊（¥1,400）'},
+  items:[
+    {t:'',k:'food',ti:'早餐：前一晚買好或到機場再吃'},
+    {t:'07:40',k:'airport',ti:'退房 → 步行到 OCAT 大樓',n:'步行約 4 分鐘；提早到買票排隊',p:[['OCAT（近鐵難波站西口）','OCAT 湊町バスターミナル']],nav:1},
+    {t:'08:00',e:'08:48',k:'move',ti:'OCAT → 利木津巴士 → 關西機場 第一航廈',n:'¥1,400；備選：下一班巴士，或南海難波站搭電車',p:[['關西機場 第一航廈','関西国際空港 第1ターミナル']],nav:1},
+    {t:'08:50',e:'11:40',k:'spot',ti:'報到、托運行李、退稅手續、安檢',n:'逛免稅店',p:[['關西機場 第一航廈','関西国際空港 第1ターミナル']]},
+    {t:'12:20',e:'14:35',k:'flight',fl:{no:'星宇 JX821',from:'KIX',fromN:'關西 第一航廈',dep:'12:20',to:'TPE',toN:'桃園 第一航廈',arr:'14:35',date:'11/23(一)'},n:'午餐：飛機餐；抵達為台灣時間'},
+    {t:'',k:'move',ti:'機場 → 家'},
+    {t:'晚上',k:'rest',ti:'在家休息'}
+  ]
+}
+];
+
+const HOTELS = [
+  {n:'琥珀 Apartment Hotel Kyoto',d:'11/15 – 11/19（4 晚）',r:'標準家庭房',g:'LZm5UpZWY5z6HNzu5',area:'京都・五條',sec:PRICE.kyoto},
+  {n:'天然温泉 浪華の湯 ドーミーイン大阪谷町',d:'11/19 – 11/22（3 晚）',r:'日式雙床 ×2（含早餐，13F）',g:'oSpLpB1HBNtJLC2k8',area:'大阪・谷町四丁目',sec:PRICE.tani},
+  {n:'APA Hotel & Resort Osaka Namba Ekimae Tower',d:'11/22 – 11/23（1 晚）',r:'標準雙人間（高樓層）、標準三人房｜禁煙',g:'uxz1xznSDTei2km26',area:'大阪・難波',sec:PRICE.apa}
+];
+
+/* ---------- render ---------- */
+const KIND = {airport:'出發',flight:'航班',move:'交通',spot:'景點',food:'用餐',hotel:'住宿',rest:'休息'};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const isUrl = s => /^https?:/.test(s);
+const searchUrl = q => isUrl(q) ? q : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+const navUrl = q => isUrl(q) ? q : 'https://www.google.com/maps/dir/?api=1&travelmode=transit&destination=' + encodeURIComponent(q);
+
+function chip(p, nav){
+  const [label, q] = Array.isArray(p) ? p : [p, p];
+  const href = nav ? navUrl(q) : searchUrl(q);
+  return `<a class="chip${nav?' nav':''}" href="${esc(href)}" target="_blank" rel="noopener"><span class="pin">${nav?'🧭':'📍'}</span>${esc(label)}</a>`;
+}
+function secBox(label, rows){
+  return `<details class="sec"><summary>🔒 ${esc(label)}</summary><dl>${rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>`;
+}
+function flightCard(f){
+  return `<div class="flight"><div class="top"><span>✈ ${esc(f.no)}</span><span>${esc(f.date)}</span></div>
+  <div class="body"><div><div class="code">${f.from}</div><div class="tm">${f.dep}</div><div class="ap">${esc(f.fromN)}</div></div>
+  <div class="mid">→</div>
+  <div class="r"><div class="code">${f.to}</div><div class="tm">${f.arr}</div><div class="ap">${esc(f.toN)}</div></div></div></div>`;
+}
+function item(x, isNow){
+  const cls = ['it','k-'+x.k]; if(x.opt) cls.push('opt'); if(isNow) cls.push('now'); if(x.k==='flight') cls.push('flightrow');
+  const time = x.t ? `${esc(x.t)}${x.e?`<small>${esc(x.e)}</small>`:''}` : '';
+  let body;
+  if(x.k==='flight'){
+    body = flightCard(x.fl) + (x.n?`<div class="note" style="padding:6px 4px 0">${esc(x.n)}</div>`:'');
+  } else {
+    const p = (x.p||[]).map(v => chip(v, x.nav)).join('');
+    const l = (x.links||[]).map(([a,u]) => `<a class="chip" href="${esc(u)}" target="_blank" rel="noopener">🔗 ${esc(a)}</a>`).join('');
+    body = `<div class="ti">${x.tag?`<span class="tag">${esc(x.tag)}</span>`:''}<span class="kind">${KIND[x.k]}</span>${esc(x.ti)}</div>
+      ${x.n?`<div class="note">${esc(x.n)}</div>`:''}
+      ${x.imp?`<div class="imp">${esc(x.imp)}</div>`:''}
+      ${p||l?`<div class="chips">${p}${l}</div>`:''}
+      ${x.sec?secBox(x.sec.l, x.sec.r):''}`;
+  }
+  return `<li class="${cls.join(' ')}"><div class="time">${time}</div><div class="dot"></div><div class="card">${body}</div></li>`;
+}
+function shop(s){
+  const links = [];
+  if(s.g) links.push(`<a class="g" href="${G(s.g)}" target="_blank" rel="noopener">📍 Google 地圖${s.gr?' '+s.gr:''}</a>`);
+  if(s.tb||s.tbu) links.push(`<a class="t" href="${esc(s.tbu||TB(s.tb))}" target="_blank" rel="noopener">Tabelog${s.tr?' '+s.tr:''}</a>`);
+  return `<div class="shop"><div class="nm">${esc(s.n)}</div>${s.hr?`<div class="hr">${esc(s.hr)}</div>`:''}<div class="lk">${links.join('')}</div></div>`;
+}
+
+/* 日本時間的「現在」 */
+function jstNow(){
+  const d = new Date(Date.now() + 9*3600e3);
+  return {date:d.toISOString().slice(0,10), min:d.getUTCHours()*60+d.getUTCMinutes()};
+}
+const toMin = t => { const m = /^~?(\d{1,2}):(\d{2})$/.exec(t||''); return m ? +m[1]*60 + +m[2] : null; };
+
+function renderDay(i){
+  const d = DAYS[i], now = jstNow();
+  let nowIdx = -1;
+  if(now.date === d.date){
+    d.items.forEach((x,j) => { const m = toMin(x.t); if(m!==null && m<=now.min && !x.opt) nowIdx = j; });
+  }
+  const stay = d.stay ? `<a class="stay" href="${esc(d.stay[1])}" target="_blank" rel="noopener">🏨 住：${esc(d.stay[0])}</a>` : '';
+  const alert = d.alert ? `<div class="alert"><div class="ic">${d.alert.ic}</div><div><div class="big">${d.alert.time}</div><b>${esc(d.alert.head)}</b><small>${esc(d.alert.sub)}</small></div></div>` : '';
+  const info = d.info ? `<details class="info"><summary>當日備用資訊（超市・美食・伴手禮）</summary>${d.info.map(g=>`<div class="grp"><h4>${esc(g.h)}</h4>${g.l.map(shop).join('')}</div>`).join('')}</details>` : '';
+  document.getElementById('main').innerHTML = `
+    <section class="dayhead"><div class="n">DAY ${i+1} · ${d.md}（${d.wd}）</div><h2>${esc(d.title)}</h2><div class="sum">${esc(d.sum)}</div>${stay}</section>
+    ${alert}
+    <div class="legend">${['move','spot','food','hotel'].map(k=>`<span class="k-${k}"><i></i>${KIND[k]}</span>`).join('')}<span>📍 地圖位置　🧭 大眾運輸導航</span></div>
+    <ol class="tl">${d.items.map((x,j)=>item(x, j===nowIdx)).join('')}</ol>
+    ${info}
+    <div class="daynav"><button ${i===0?'disabled':''} data-go="${i-1}">← 前一天</button><button data-go="${i+1<DAYS.length?i+1:'hotels'}">${i+1<DAYS.length?'後一天 →':'住宿・航班 →'}</button></div>`;
+}
+function renderHotels(){
+  const f = DAYS.flatMap(d => d.items.filter(x=>x.k==='flight').map(x=>x.fl));
+  document.getElementById('main').innerHTML = `
+    <section class="dayhead"><div class="n">INFO</div><h2>住宿與航班</h2><div class="sum">星宇航空・桃園 第一航廈 ⇄ 關西 第一航廈</div></section>
+    <div class="flights2">${f.map(flightCard).join('')}</div>
+    <div class="alert"><div class="ic">⏰</div><div><b>出發去機場時間</b><small>11/15（日）05:30 從家開車出發往桃園機場（約 1 小時）<br>11/23（一）07:40 前退房，步行至 OCAT 搭 08:00 利木津巴士</small></div></div>
+    ${HOTELS.map(h=>`<div class="hotel"><div class="nm">${esc(h.n)}</div><div class="meta">${esc(h.area)}｜${esc(h.d)}<br>${esc(h.r)}</div><div class="chips"><a class="chip" href="${G(h.g)}" target="_blank" rel="noopener"><span class="pin">📍</span>Google 地圖</a><a class="chip nav k-hotel" href="${G(h.g)}" target="_blank" rel="noopener"><span class="pin">🧭</span>導航</a></div>${secBox('訂房資料', h.sec)}</div>`).join('')}
+    <div class="daynav"><button data-go="${DAYS.length-1}">← 最後一天</button><button data-go="0">回到第一天</button></div>`;
+}
+
+const tabs = document.getElementById('tabs');
+function renderTabs(cur){
+  const today = jstNow().date;
+  tabs.innerHTML = DAYS.map((d,i)=>`<button class="tab${cur===i?' on':''}${d.items.some(x=>x.k==='flight')?' has-flight':''}" data-go="${i}"><span class="d">${d.md}</span><span class="w">週${d.wd}</span>${d.date===today?'<span class="today">今天</span>':''}</button>`).join('')
+    + `<button class="tab${cur==='hotels'?' on':''}" data-go="hotels"><span class="d">🏨</span><span class="w">住宿航班</span></button>`;
+  const on = tabs.querySelector('.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest'});
+}
+function go(key, push=true){
+  const k = key==='hotels' ? 'hotels' : Math.max(0, Math.min(DAYS.length-1, +key||0));
+  renderTabs(k);
+  k==='hotels' ? renderHotels() : renderDay(k);
+  if(push) history.replaceState(null,'', k==='hotels' ? '#hotels' : '#day'+(k+1));
+  window.scrollTo({top:0});
+  const now = document.querySelector('.it.now');
+  if(now) now.scrollIntoView({block:'center'});
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if(b) go(b.dataset.go);
+});
+function initial(){
+  const h = location.hash;
+  if(h==='#hotels') return 'hotels';
+  const m = /^#day(\d)$/.exec(h); if(m) return +m[1]-1;
+  const i = DAYS.findIndex(d => d.date === jstNow().date);
+  return i >= 0 ? i : 0;
+}
+go(initial(), false);
+
+/* 深淺色切換 */
+const root = document.documentElement;
+try{ const t = localStorage.getItem('theme'); if(t) root.dataset.theme = t; }catch(e){}
+document.getElementById('themeBtn').onclick = () => {
+  const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme = dark ? 'light' : 'dark';
+  try{ localStorage.setItem('theme', root.dataset.theme); }catch(e){}
+};
+</script>
+</body>
+</html>
