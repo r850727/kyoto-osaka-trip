@@ -2,17 +2,20 @@
 
 京都、宇治、伏見、姬路、大阪自助旅行的行程網站。
 
+## 👉 [打開行程網站](https://r850727.github.io/kyoto-osaka-trip/)
+
+https://r850727.github.io/kyoto-osaka-trip/
+
+想直接看某一天，可以在網址後面加 `#day1` 到 `#day9`，例如 [11/15 第一天](https://r850727.github.io/kyoto-osaka-trip/#day1)。住宿和航班資訊在 [#hotels](https://r850727.github.io/kyoto-osaka-trip/#hotels)。
+
 - 用日期分頁切換每天的行程，每天的時間軸都排好了
 - 點 📍 會在 Google 地圖上開啟地點；點 🧭 會用大眾運輸導航到目的地
 - 航班和出發去機場的時間都有特別標出來
 - 旅行期間打開網站，會自動跳到當天，並標出目前的行程
 
-## 發佈到 GitHub Pages
+## 更新網站
 
-1. 把 `index.html` 推到 GitHub repo
-2. 到 repo 的 **Settings → Pages**
-3. Source 選 **Deploy from a branch**，Branch 選 `main` / `(root)`，然後存檔
-4. 等一兩分鐘，網址會是 `https://<帳號>.github.io/<repo 名稱>/`
+網站由 GitHub Pages 從 `main` 分支的根目錄發佈。修改 `index.html` 並推送到 `main` 之後，等一兩分鐘網站就會自動更新。
 
 ## 修改行程
 
