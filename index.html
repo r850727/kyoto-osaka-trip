@@ -361,14 +361,18 @@ const DAYS = [
     {t:'17:10',e:'17:30',k:'move',ti:'南森町 → 本町（或堺筋本町）',p:[['本町站','本町駅']],nav:1},
     {t:'17:30',e:'18:00',k:'spot',ti:'OS Drug 新船場店 逛藥妝',imp:'18:45 關門，所以排在晚餐前',n:'近本町站、船場商圈；只收現金',p:[['OS Drug 新船場店',G('ooxB3AFmNxgNPe6V9')]]},
     {t:'18:00',e:'19:30',k:'food',ti:'晚餐：鮨 酒 肴 杉玉 本町（居酒屋）',p:[['杉玉 本町',G('EkMAAvtteepXpRSd7')],['備選：海鮮丼まぐろ丸 本店',G('FfuQ8igpr4W4JGr76')]]},
-    {t:'19:30',e:'19:50',k:'move',ti:'本町 → 中央線 → 谷町四丁目',p:[['谷町四丁目站','谷町四丁目駅']],nav:1},
-    {t:'19:50',e:'20:45',k:'spot',opt:1,ti:'備選：大阪城 免費景點 夜間散步',n:'可去可不去，11/22 早上還會來',p:[['大阪城公園','大阪城公園']]},
+    {t:'19:30',e:'19:35',k:'move',ti:'本町 → 中央線 → 堺筋本町',n:'只搭一站，用走的約 15 分鐘',p:[['ライフ 堺筋本町店',G('h4azLbXhos6Avrq57')]],nav:1},
+    {t:'19:35',e:'20:05',k:'spot',ti:'ライフ 堺筋本町店 超市買伴手禮',n:'よつ葉 發酵奶油、ヒガシマル 牡蠣だし醤油、パインアメ\n奶油要冷藏，回飯店放冰箱',p:[['ライフ 堺筋本町店',G('h4azLbXhos6Avrq57')]],go:['看伴手禮清單','gift']},
+    {t:'20:05',e:'20:15',k:'move',ti:'堺筋本町 → 中央線 → 谷町四丁目',p:[['谷町四丁目站','谷町四丁目駅']],nav:1},
+    {t:'20:15',e:'21:00',k:'spot',opt:1,ti:'備選：大阪城 免費景點 夜間散步',n:'可去可不去，11/22 早上還會來',p:[['大阪城公園','大阪城公園']]},
     {t:'晚上',k:'rest',ti:'飯店休息'}
   ],
   info:[
     {h:'伴手禮',l:[
-      {n:'阿闍梨餅本舗 満月 本店（阿闍梨餅，可去可不去）',hr:'JR 京都伊勢丹 B1F 和菓子賣場也買得到',g:'c8xGfc13aYEj4k2x7'}]},
+      {n:'阿闍梨餅本舗 満月 本店（阿闍梨餅，可去可不去）',hr:'JR 京都伊勢丹 B1F 和菓子賣場也買得到',g:'c8xGfc13aYEj4k2x7'},
+      {n:'ライフ 堺筋本町店（發酵奶油、牡蠣醬油、鳳梨糖）',hr:'09:00–24:00｜晚餐後 19:35',g:'h4azLbXhos6Avrq57'}]},
     {h:'超市',l:[
+      {n:'ライフ 堺筋本町店',hr:'09:00–24:00',g:'h4azLbXhos6Avrq57'},
       {n:'デイリーカナートイズミヤ 法円坂店',hr:'09:00–24:00',g:'3F51dbBTosNMCnWRA'},
       {n:'KOHYO 超市 內本町店',hr:'07:00–23:00',g:'5PCozZGopbLopZaR8'}]},
     {h:'美食',l:[
@@ -510,6 +514,9 @@ const IMG = {
   MALE:['https://static.gltjp.com/glt/data/directory/16000/15254/20231220_120309_d2efcb93_w640.webp','https://www.gltjp.com/ja/directory/item/15254/'],
   HOHO:['https://prcdn.freetls.fastly.net/release_image/77615/60/77615-60-c9593029813a838f2efbde0e91f197b3-3900x2193.jpg?width=600&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff','https://www.zaikei.co.jp/releases/2557002/','左：製菓用 焙じ茶パウダー 極上｜右：焙じ茶パウダー'],
   KNOU_ROLL:['https://prcdn.freetls.fastly.net/release_image/27822/168/27822-168-7af5364ad69258f3f8ed1b9c5eb24da0-1920x1440.jpg?width=600&format=jpeg&auto=webp&fit=bounds','https://prtimes.jp/main/html/rd/p/000000168.000027822.html','京都 濃茶ロールケーキ'],
+  BUTTER:['https://greenbeans.com/images-v3/89edeb69-fe10-49ca-baab-5c51900239b9/7344d0ef-8cbe-45ac-9709-e384906510d0/300x300.jpg','https://greenbeans.com/products/10000049765011/details','よつ葉 パンにおいしい発酵バター 100g'],
+  OYSTER:['https://sundrug-online.com/cdn/shop/files/4902475260148.jpg?width=600','https://www.higashimaru.co.jp/','ヒガシマル 牡蠣だし醤油 400ml'],
+  PINE:['https://static.honichi.com/uploads/goods/maker_item/image/9473/image?v=1749229873','https://honichi.com/goods/items/2188e435-2400-41b2-b81f-33962fa3bebf/','パイン パインアメ'],
   KNOU:['https://assets.hldycdn.com/cdn-cgi/image/format=webp,quality=75,width=600/82db9933-e101-4017-a897-5269b4410f2e.jpeg','https://haveagood-holiday.com/en/articles/kyoto-matcha-rice-chocolate-release','濃い抹茶 お米しょこら'] 
 };
 
@@ -536,7 +543,13 @@ const GIFT_AREAS = [
    maps:[['中村藤吉本店 宇治本店',G('kHgqA1kCujNwdhMM6')],['中村藤吉本店 平等院店','中村藤吉本店 平等院店']],
    items:[
      {n:'中村藤吉 鐵盒餅乾 ビスカン',img:IMG.BISCAN,item:'¥3,900，每人限購 3 點｜宇治本店在 JR 宇治站旁；平等院店在表參道上'}]},
-  {h:'⑤ 其他備選',when:'',note:'',
+  {h:'⑤ ライフ 堺筋本町店（超市）',when:'11/19（四）晚餐後 19:35',note:'大阪第一晚，晚餐後順路買；09:00–24:00',
+   maps:[['ライフ 堺筋本町店',G('h4azLbXhos6Avrq57')]],
+   items:[
+     {n:'よつ葉 パンにおいしい発酵バター',img:IMG.BUTTER,item:'100g｜要冷藏，回國前一晚放飯店冰箱'},
+     {n:'ヒガシマル 牡蠣だし醤油 400ml',img:IMG.OYSTER,item:'官網 ¥451（含稅）｜液體要放託運行李'},
+     {n:'パイン パインアメ（大阪鳳梨糖）',img:IMG.PINE,item:'大阪老牌鳳梨硬糖'}]},
+  {h:'⑥ 其他備選',when:'',note:'',
    maps:[['阿闍梨餅本舗 満月 本店',G('c8xGfc13aYEj4k2x7')],['中村藤吉本店 京都駅店','中村藤吉本店 京都駅店']],
    items:[
      {n:'満月 本店 阿闍梨餅',img:IMG.AJARI,item:'11/19（四）早上備選，出町柳附近'},
@@ -550,7 +563,8 @@ const MARKETS = [
     {n:'ハッピー六原',hr:'09:00–20:00｜應該是最便宜',g:'V5XTgi52dMuqjuBm6'}]},
   {h:'大阪・谷町四丁目（11/19 – 11/22 住浪華の湯附近）',l:[
     {n:'デイリーカナートイズミヤ 法円坂店',hr:'09:00–24:00',g:'3F51dbBTosNMCnWRA'},
-    {n:'KOHYO 超市 內本町店',hr:'07:00–23:00',g:'5PCozZGopbLopZaR8'}]},
+    {n:'KOHYO 超市 內本町店',hr:'07:00–23:00',g:'5PCozZGopbLopZaR8'},
+    {n:'ライフ 堺筋本町店',hr:'09:00–24:00｜11/19 晚餐後來買伴手禮（發酵奶油、牡蠣醬油、鳳梨糖）',g:'h4azLbXhos6Avrq57'}]},
   {h:'大阪・難波（11/22 – 11/23 住 APA 附近）',l:[
     {n:'LIFE 中央廣場 難波店',hr:'09:00–24:00',g:'LigCpRRP1uXfP68j7'}]}
 ];
