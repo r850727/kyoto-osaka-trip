@@ -144,6 +144,14 @@ details.info[open] summary::after{content:"－"}
 .gift .where + .where{margin-top:0}
 .gift .nm2{font-weight:500}
 .gift .where .hr{font-size:13px;color:var(--muted);margin-top:3px}
+.pic{margin-top:6px}
+.pic summary{display:inline-block;cursor:pointer;font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);list-style:none}
+.pic summary::-webkit-details-marker{display:none}
+.pic[open] summary{margin-bottom:8px}
+.pic figure{margin:0}
+.pic img{display:block;width:100%;max-width:420px;min-height:80px;border-radius:10px;background:var(--line)}
+.pic figcaption{font-size:12px;color:var(--muted);margin-top:4px}
+.pic figcaption a{color:inherit}
 .info.market{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);margin:14px 0 0;padding-top:10px}
 .info h4{margin:6px 0 6px;font-size:13px;color:var(--accent);letter-spacing:.08em}
 .shop{padding:8px 0;border-top:1px solid var(--line)}
@@ -494,34 +502,44 @@ const HOTELS = [
   {n:'APA Hotel & Resort Osaka Namba Ekimae Tower',d:'11/22 – 11/23（1 晚）',r:'標準雙人間（高樓層）、標準三人房｜禁煙',g:'uxz1xznSDTei2km26',area:'大阪・難波',sec:PRICE.apa}
 ];
 
+/* 伴手禮圖片：[圖片網址, 來源頁, 說明]，點「看圖片」才載入 */
+const IMG = {
+  AJARI:['https://static.gltjp.com/glt/data/directory/16000/15220/20231215_190847_cbc81d99_w640.webp','https://www.gltjp.com/ja/directory/item/15220/'],
+  MARUKYU:['https://www.marukyu-koyamaen.co.jp/img-2019/top/image-top04_480.jpg','https://www.marukyu-koyamaen.co.jp/','官網示意圖，不是實際買的品項'],
+  BISCAN:['https://tokichi.jp/cdn/shop/files/1284x1284_28f2ecdc-4b2a-4baf-afcc-d8e566993ca5.jpg?v=1775529793&width=600','https://tokichi.jp/products/bk31'],
+  MALE:['https://static.gltjp.com/glt/data/directory/16000/15254/20231220_120309_d2efcb93_w640.webp','https://www.gltjp.com/ja/directory/item/15254/'],
+  HOHO:['https://prcdn.freetls.fastly.net/release_image/77615/60/77615-60-c9593029813a838f2efbde0e91f197b3-3900x2193.jpg?width=600&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff','https://www.zaikei.co.jp/releases/2557002/','左：製菓用 焙じ茶パウダー 極上｜右：焙じ茶パウダー'],
+  KNOU:['https://assets.hldycdn.com/cdn-cgi/image/format=webp,quality=75,width=600/82db9933-e101-4017-a897-5269b4410f2e.jpeg','https://haveagood-holiday.com/en/articles/kyoto-matcha-rice-chocolate-release','濃い抹茶 お米しょこら'] 
+};
+
 /* 伴手禮：依購買區域分組。maps = [名稱, 地圖網址或搜尋字]；items 的 done = 已購買 */
 const GIFT_AREAS = [
   {h:'① JR 京都伊勢丹 B1F 食品賣場',when:'11/15（日）晚上 · 11/17（二）10:10',note:'20:00 關門，11/15 晚上先來這裡',
    maps:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')]],
    items:[
-     {n:'満月 阿闍梨餅',item:'1 個 ¥140｜満月 JR 京都伊勢丹店，B1F 和菓子賣場'},
-     {n:'丸久小山園（抹茶）',item:'11/17 10:10 取貨，已排進行程',done:'已購買'},
-     {n:'中村藤吉 鐵盒餅乾 ビスカン',item:'¥3,900，每人限購 3 點｜可以找找看，宇治沒買到再來這裡'},
-     {n:'京都北山 MALEBRANCHE',item:'在 3F ロマンの森カフェ，也有賣燒菓子；茶之菓主要在 ③ 八条口店買'}]},
+     {n:'満月 阿闍梨餅',img:IMG.AJARI,item:'1 個 ¥140｜満月 JR 京都伊勢丹店，B1F 和菓子賣場'},
+     {n:'丸久小山園（抹茶）',img:IMG.MARUKYU,item:'11/17 10:10 取貨，已排進行程',done:'已購買'},
+     {n:'中村藤吉 鐵盒餅乾 ビスカン',img:IMG.BISCAN,item:'¥3,900，每人限購 3 點｜可以找找看，宇治沒買到再來這裡'},
+     {n:'京都北山 MALEBRANCHE',img:IMG.MALE,item:'在 3F ロマンの森カフェ，也有賣燒菓子；茶之菓主要在 ③ 八条口店買'}]},
   {h:'② 京都車站大樓 1F おみやげ小路 京小町',when:'11/15（日）晚上',note:'HOHO 和 KNOU 在同一區，一次買齊',
    maps:[['京小町','京都駅 おみやげ小路 京小町']],
    items:[
-     {n:'HOHO HOJICHA 焙茶',item:'焙じ茶パウダー 極上深煎 80g｜¥1,980｜店內是否有賣焙茶粉單品，出發前確認'},
-     {n:'KNOU（ノウ）京のお米しょこら',item:'京都車站限定，宇治抹茶米香巧克力'},
+     {n:'HOHO HOJICHA 焙茶',img:IMG.HOHO,item:'焙じ茶パウダー 極上深煎 80g｜¥1,980｜店內是否有賣焙茶粉單品，出發前確認'},
+     {n:'KNOU（ノウ）京のお米しょこら',img:IMG.KNOU,item:'京都車站限定，宇治抹茶米香巧克力'},
      {n:'KNOU 京都抹茶ロールケーキ',item:'1 條 ¥1,620（未稅）｜要冷藏、保存期限短，在飯店當甜點吃，不適合帶回台灣'}]},
   {h:'③ 八条口 近鐵名店街 みやこみち',when:'11/15（日）晚上',note:'營業到 21:00，放最後買',
    maps:[['マールブランシュ 八条口店','マールブランシュ 京都駅八条口店']],
    items:[
-     {n:'京都北山 MALEBRANCHE 茶之菓',item:'茶の菓（濃茶貓舌餅）、京都北山あわせ L ¥5,400'}]},
+     {n:'京都北山 MALEBRANCHE 茶之菓',img:IMG.MALE,item:'茶の菓（濃茶貓舌餅）、京都北山あわせ L ¥5,400'}]},
   {h:'④ 宇治',when:'11/17（二）11:00 – 14:30',note:'中村藤吉兩家店都在行程路線上',
    maps:[['中村藤吉本店 宇治本店',G('kHgqA1kCujNwdhMM6')],['中村藤吉本店 平等院店','中村藤吉本店 平等院店']],
    items:[
-     {n:'中村藤吉 鐵盒餅乾 ビスカン',item:'¥3,900，每人限購 3 點｜宇治本店在 JR 宇治站旁；平等院店在表參道上'}]},
+     {n:'中村藤吉 鐵盒餅乾 ビスカン',img:IMG.BISCAN,item:'¥3,900，每人限購 3 點｜宇治本店在 JR 宇治站旁；平等院店在表參道上'}]},
   {h:'⑤ 其他備選',when:'',note:'',
    maps:[['阿闍梨餅本舗 満月 本店',G('c8xGfc13aYEj4k2x7')],['中村藤吉本店 京都駅店','中村藤吉本店 京都駅店']],
    items:[
-     {n:'満月 本店 阿闍梨餅',item:'11/19（四）早上備選，出町柳附近'},
-     {n:'中村藤吉 京都駅店 ビスカン',item:'JR 西口剪票口前 Eat Paradise 3F｜2026/3 曾公告整修休業，出發前確認是否營業'}]}
+     {n:'満月 本店 阿闍梨餅',img:IMG.AJARI,item:'11/19（四）早上備選，出町柳附近'},
+     {n:'中村藤吉 京都駅店 ビスカン',img:IMG.BISCAN,item:'JR 西口剪票口前 Eat Paradise 3F｜2026/3 曾公告整修休業，出發前確認是否營業'}]}
 ];
 
 const MARKETS = [
@@ -575,6 +593,9 @@ function item(x, isNow){
   }
   return `<li class="${cls.join(' ')}"><div class="time">${time}</div><div class="dot"></div><div class="card">${body}</div></li>`;
 }
+function picBox([src, from, cap]){
+  return `<details class="pic"><summary>📷 看圖片</summary><figure><img data-src="${esc(src)}" alt="" referrerpolicy="no-referrer"><figcaption>${cap?esc(cap)+'｜':''}<a href="${esc(from)}" target="_blank" rel="noopener">圖片來源</a></figcaption></figure></details>`;
+}
 function shop(s){
   const links = [];
   if(s.g||s.q) links.push(`<a class="g" href="${esc(s.g?G(s.g):searchUrl(s.q))}" target="_blank" rel="noopener">📍 Google 地圖${s.gr?' '+s.gr:''}</a>`);
@@ -624,7 +645,7 @@ function renderGifts(){
       <div class="nm">${esc(a.h)}</div>
       <div class="meta">${a.when?`🗓 ${esc(a.when)}`:''}${a.when&&a.note?'｜':''}${esc(a.note)}</div>
       <div class="chips" style="margin-top:0">${a.maps.map(([l,q])=>`<a class="chip" href="${esc(searchUrl(q))}" target="_blank" rel="noopener"><span class="pin">📍</span>${esc(l)}</a>`).join('')}</div>
-      ${a.items.map(it=>`<div class="where${it.done?' done':''}"><div class="nm2">${it.done?'✅':'🛍'} ${esc(it.n)}${it.done?` <span class="imp" style="margin:0 0 0 4px;padding:0 6px;font-size:12px">${esc(it.done)}</span>`:''}</div><div class="hr">${esc(it.item)}</div></div>`).join('')}
+      ${a.items.map(it=>`<div class="where${it.done?' done':''}"><div class="nm2">${it.done?'✅':'🛍'} ${esc(it.n)}${it.done?` <span class="imp" style="margin:0 0 0 4px;padding:0 6px;font-size:12px">${esc(it.done)}</span>`:''}</div><div class="hr">${esc(it.item)}</div>${it.img?picBox(it.img):''}</div>`).join('')}
     </div>`).join('')}
     <div class="daynav"><button data-go="hotels">← 住宿・航班</button><button data-go="market">超市 →</button></div>`;
 }
@@ -654,6 +675,13 @@ function go(key, push=true){
   const now = document.querySelector('.it.now');
   if(now) now.scrollIntoView({block:'center'});
 }
+/* 圖片點開才載入；載入失敗就顯示提示 */
+document.addEventListener('toggle', e => {
+  const d = e.target; if(!d.open || !d.classList.contains('pic')) return;
+  const img = d.querySelector('img[data-src]'); if(!img) return;
+  img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'),{className:'hr',textContent:'圖片載入失敗，請點下方「圖片來源」查看'})); };
+  img.src = img.dataset.src; img.removeAttribute('data-src');
+}, true);
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-go]'); if(b) go(b.dataset.go);
 });
