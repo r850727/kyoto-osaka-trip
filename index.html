@@ -278,7 +278,7 @@ const DAYS = [
     {t:'08:00',k:'move',ti:'飯店 → 東寺',p:['東寺'],nav:1},
     {t:'08:30',e:'09:50',k:'spot',ti:'東寺',p:['東寺']},
     {t:'09:50',e:'10:10',k:'move',ti:'東寺 → 京都車站',n:'步行約 15 分鐘',p:[['京都車站','京都駅']],nav:1},
-    {t:'10:10',e:'10:30',k:'spot',ti:'JR 京都伊勢丹 B1 丸久小山園取貨、阿闍梨餅、中村藤吉鐵盒餅乾',imp:'丸久小山園已購買，記得取貨',n:'10:00 開門；阿闍梨餅在 B1F 和菓子賣場（11/15 買過可跳過）',go:['🎁 伴手禮清單','gift'],p:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')]]},
+    {t:'10:10',e:'10:30',k:'spot',ti:'JR 京都伊勢丹 B1 丸久小山園取貨、阿闍梨餅、中村藤吉鐵盒餅乾',imp:'丸久小山園 抹茶「金輪」40g 已購買，到 B1F 店頭お受取りカウンター 取貨',n:'10:00 開門；阿闍梨餅在 B1F 和菓子賣場（11/15 買過可跳過）',go:['🎁 伴手禮清單','gift'],p:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')]]},
     {t:'10:35',e:'11:00',k:'move',ti:'京都車站 → JR 奈良線 → 宇治站',n:'快速約 17 分鐘、普通約 30 分鐘',p:[['JR 宇治站','JR宇治駅']],nav:1},
     {t:'11:00',e:'11:10',k:'spot',ti:'中村藤吉 宇治本店 買鐵盒餅乾（ビスカン）',n:'JR 宇治站旁，可分頭先去排午餐；¥3,900，每人限購 3 點\n沒買到的話：平等院店（表參道上）、京都駅店、JR 京都伊勢丹 B1F 也可以找',p:[['中村藤吉 宇治本店',G('kHgqA1kCujNwdhMM6')]],links:[['鐵盒餅乾','https://tokichi.jp/products/bk31']]},
     {t:'11:10',e:'12:20',k:'food',ti:'午餐：しゅばく（蕎麥麵）',n:'11:10 排隊，11:30 開門',p:[['しゅばく',G('ZmNrnPfuXZYp74nP6')],['備選：宇治蕎麦 つばめ屋',G('92nfweqHe2Ufcf2r6')]]},
@@ -505,7 +505,7 @@ const HOTELS = [
 /* 伴手禮圖片：[圖片網址, 來源頁, 說明]，點「看圖片」才載入 */
 const IMG = {
   AJARI:['https://static.gltjp.com/glt/data/directory/16000/15220/20231215_190847_cbc81d99_w640.webp','https://www.gltjp.com/ja/directory/item/15220/'],
-  MARUKYU:['https://www.marukyu-koyamaen.co.jp/img-2019/top/image-top04_480.jpg','https://www.marukyu-koyamaen.co.jp/','官網示意圖，不是實際買的品項'],
+  MARUKYU:['https://www.marukyu-koyamaen.co.jp/english/shop/wp-content/uploads/2020/11/01-05-kinrin-400x400.jpg','https://www.marukyu-koyamaen.co.jp/english/shop/products/1151020c1','抹茶「金輪」（圖為 40g 與 20g 罐）'],
   BISCAN:['https://tokichi.jp/cdn/shop/files/1284x1284_28f2ecdc-4b2a-4baf-afcc-d8e566993ca5.jpg?v=1775529793&width=600','https://tokichi.jp/products/bk31'],
   MALE:['https://static.gltjp.com/glt/data/directory/16000/15254/20231220_120309_d2efcb93_w640.webp','https://www.gltjp.com/ja/directory/item/15254/'],
   HOHO:['https://prcdn.freetls.fastly.net/release_image/77615/60/77615-60-c9593029813a838f2efbde0e91f197b3-3900x2193.jpg?width=600&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff','https://www.zaikei.co.jp/releases/2557002/','左：製菓用 焙じ茶パウダー 極上｜右：焙じ茶パウダー'],
@@ -518,7 +518,7 @@ const GIFT_AREAS = [
    maps:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')]],
    items:[
      {n:'満月 阿闍梨餅',img:IMG.AJARI,item:'1 個 ¥140｜満月 JR 京都伊勢丹店，B1F 和菓子賣場'},
-     {n:'丸久小山園（抹茶）',img:IMG.MARUKYU,item:'11/17 10:10 取貨，已排進行程',done:'已購買'},
+     {n:'丸久小山園 抹茶「金輪」40g',img:IMG.MARUKYU,item:'11 月份 B1F 店頭お受取りカウンター 取貨｜11/17 10:10 取貨，已排進行程',done:'已購買'},
      {n:'中村藤吉 鐵盒餅乾 ビスカン',img:IMG.BISCAN,item:'¥3,900，每人限購 3 點｜可以找找看，宇治沒買到再來這裡'},
      {n:'京都北山 MALEBRANCHE',img:IMG.MALE,item:'在 3F ロマンの森カフェ，也有賣燒菓子；茶之菓主要在 ③ 八条口店買'}]},
   {h:'② 京都車站大樓 1F おみやげ小路 京小町',when:'11/15（日）晚上',note:'HOHO 和 KNOU 在同一區，一次買齊',
