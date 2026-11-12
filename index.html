@@ -139,6 +139,11 @@ details.info summary::-webkit-details-marker{display:none}
 details.info summary::after{content:"＋";color:var(--muted)}
 details.info[open] summary::after{content:"－"}
 .info .grp{padding:0 14px 10px}
+.hotel.gift{border-left-color:var(--food)}
+.hotel.gift.done{border-left-color:var(--spot)}
+.gift .where{padding:6px 0;border-top:1px solid var(--line)}
+.gift .where:first-of-type{border-top:none}
+.gift .where .hr{font-size:13px;color:var(--muted);margin-top:3px}
 .info.market{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);margin:14px 0 0;padding-top:10px}
 .info h4{margin:6px 0 6px;font-size:13px;color:var(--accent);letter-spacing:.08em}
 .shop{padding:8px 0;border-top:1px solid var(--line)}
@@ -212,7 +217,7 @@ const DAYS = [
     {t:'16:30',e:'17:15',k:'spot',ti:'タキモト 名酒館·葡萄館 逛清酒店',n:'買完先回飯店放',p:[['タキモト 名酒館',G('H1Qu8HfJ3ytogM9MA')]]},
     {t:'17:30',e:'17:45',k:'move',ti:'飯店 → 公車 → 京都車站',p:[['京都車站','京都駅']],nav:1},
     {t:'17:50',e:'18:50',k:'food',ti:'晚餐：寿しのむさし 京都駅八条口店（迴轉壽司）',n:'到了先抽號碼牌',p:[['寿しのむさし 八条口店',G('TAXBAwmWnsmCYzDi8')],['備選：大起水産 京都タワーサンド',G('vrQZpTxFbajfnVEaA')]]},
-    {t:'18:50',e:'19:40',k:'spot',ti:'京都車站地下街 買麵包、看伴手禮',n:'麵包當隔天早餐',p:[['京都駅前地下街 Porta',G('xfZSbCNpHKPe59XRA')]]},
+    {t:'18:50',e:'19:40',k:'spot',ti:'京都車站 買伴手禮、買麵包',n:'先去 JR 京都伊勢丹 B1F（20:00 關門）買満月阿闍梨餅 → 車站大樓 1F 京小町（HOHO 焙茶、KNOU）→ 八条口マールブランシュ（茶之菓）\n麵包當隔天早餐',go:['🎁 伴手禮清單','gift'],p:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')],['京小町','京都駅 おみやげ小路 京小町'],['マールブランシュ 八条口店','マールブランシュ 京都駅八条口店'],['京都駅前地下街 Porta',G('xfZSbCNpHKPe59XRA')]]},
     {t:'19:40',e:'20:15',k:'spot',ti:'京都車站 大階梯、空中徑路',n:'還有體力可改逛 AEON',p:[['京都車站 大階梯','京都駅ビル 大階段'],['空中徑路','京都駅ビル 空中径路'],['備選：AEON MALL KYOTO',G('NVQLvCgsud4EMWuF7')]]},
     {t:'20:15',e:'20:30',k:'move',ti:'京都車站 → 飯店',p:[HOTEL_KYOTO],nav:1},
     {t:'晚上',k:'rest',ti:'飯店休息',imp:'隔天 06:30 出門'}
@@ -265,9 +270,9 @@ const DAYS = [
     {t:'08:00',k:'move',ti:'飯店 → 東寺',p:['東寺'],nav:1},
     {t:'08:30',e:'09:50',k:'spot',ti:'東寺',p:['東寺']},
     {t:'09:50',e:'10:10',k:'move',ti:'東寺 → 京都車站',n:'步行約 15 分鐘',p:[['京都車站','京都駅']],nav:1},
-    {t:'10:10',e:'10:30',k:'spot',ti:'JR 京都伊勢丹 B1 買丸久小山園、阿闍梨餅、中村藤吉鐵盒餅乾',n:'10:00 開門，可能限購或缺貨；阿闍梨餅在 B1F 和菓子賣場',p:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')]]},
+    {t:'10:10',e:'10:30',k:'spot',ti:'JR 京都伊勢丹 B1 丸久小山園取貨、阿闍梨餅、中村藤吉鐵盒餅乾',imp:'丸久小山園已購買，記得取貨',n:'10:00 開門；阿闍梨餅在 B1F 和菓子賣場（11/15 買過可跳過）',go:['🎁 伴手禮清單','gift'],p:[['JR 京都伊勢丹',G('yLJj6uH8n36FsRSw9')]]},
     {t:'10:35',e:'11:00',k:'move',ti:'京都車站 → JR 奈良線 → 宇治站',n:'快速約 17 分鐘、普通約 30 分鐘',p:[['JR 宇治站','JR宇治駅']],nav:1},
-    {t:'11:00',e:'11:10',k:'spot',ti:'中村藤吉 宇治本店 買鐵盒餅乾',n:'JR 宇治站旁，可分頭先去排午餐',p:[['中村藤吉 宇治本店',G('kHgqA1kCujNwdhMM6')]],links:[['鐵盒餅乾','https://tokichi.jp/products/bk31']]},
+    {t:'11:00',e:'11:10',k:'spot',ti:'中村藤吉 宇治本店 買鐵盒餅乾（ビスカン）',n:'JR 宇治站旁，可分頭先去排午餐；¥3,900，每人限購 3 點\n沒買到的話：平等院店（表參道上）、京都駅店、JR 京都伊勢丹 B1F 也可以找',p:[['中村藤吉 宇治本店',G('kHgqA1kCujNwdhMM6')]],links:[['鐵盒餅乾','https://tokichi.jp/products/bk31']]},
     {t:'11:10',e:'12:20',k:'food',ti:'午餐：しゅばく（蕎麥麵）',n:'11:10 排隊，11:30 開門',p:[['しゅばく',G('ZmNrnPfuXZYp74nP6')],['備選：宇治蕎麦 つばめ屋',G('92nfweqHe2Ufcf2r6')]]},
     {t:'12:30',e:'14:30',k:'spot',ti:'平等院鳳凰堂',imp:'入場後先買鳳凰堂內部參觀券',p:['平等院']},
     {t:'14:30',e:'15:30',k:'spot',ti:'朝霧橋 → 宇治神社 → 宇治上神社',p:['朝霧橋','宇治神社','宇治上神社']},
@@ -489,6 +494,27 @@ const HOTELS = [
   {n:'APA Hotel & Resort Osaka Namba Ekimae Tower',d:'11/22 – 11/23（1 晚）',r:'標準雙人間（高樓層）、標準三人房｜禁煙',g:'uxz1xznSDTei2km26',area:'大阪・難波',sec:PRICE.apa}
 ];
 
+/* 伴手禮：w = 購買地點 [名稱, 地圖網址或搜尋字, 備註] */
+const GIFTS = [
+  {n:'丸久小山園（抹茶）',done:'已購買，11/17 取貨',item:'已訂購',
+   w:[['JR 京都伊勢丹 B1F',G('yLJj6uH8n36FsRSw9'),'11/17（二）10:10 取貨，已排進行程']]},
+  {n:'満月（阿闍梨餅）',item:'阿闍梨餅｜1 個 ¥140',
+   w:[['満月 JR 京都伊勢丹店（B1F 和菓子賣場）',G('yLJj6uH8n36FsRSw9'),'11/15 晚上在京都車站買'],
+      ['阿闍梨餅本舗 満月 本店',G('c8xGfc13aYEj4k2x7'),'11/19 早上備選，出町柳附近']]},
+  {n:'京都北山 MALEBRANCHE（茶之菓）',item:'茶の菓（濃茶貓舌餅）、京都北山あわせ L｜¥5,400',
+   w:[['マールブランシュ 八条口店','マールブランシュ 京都駅八条口店','近鐵名店街 みやこみち；09:00–21:00'],
+      ['JR 京都伊勢丹 3F ロマンの森カフェ',G('yLJj6uH8n36FsRSw9'),'也有賣燒菓子']]},
+  {n:'HOHO HOJICHA（焙茶）',item:'焙じ茶パウダー 極上深煎 80g｜¥1,980',
+   w:[['京都車站大樓 1F おみやげ小路 京小町','京都駅 おみやげ小路 京小町','2024 年開的常設店；店內是否有賣焙茶粉單品，出發前確認']]},
+  {n:'中村藤吉（鐵盒餅乾 ビスカン）',item:'ビスカン｜¥3,900｜每人限購 3 點',
+   w:[['中村藤吉本店 宇治本店',G('kHgqA1kCujNwdhMM6'),'11/17（二）11:00 行程會經過'],
+      ['中村藤吉本店 平等院店','中村藤吉本店 平等院店','平等院表參道上，11/17 逛平等院時順路'],
+      ['中村藤吉本店 京都駅店','中村藤吉本店 京都駅店','JR 西口剪票口前 Eat Paradise 3F；2026/3 曾公告整修休業，出發前確認是否營業'],
+      ['JR 京都伊勢丹 B1F',G('yLJj6uH8n36FsRSw9'),'11/17 取丸久小山園時順便找']]},
+  {n:'KNOU（ノウ）',item:'京のお米しょこら（京都車站限定，宇治抹茶米香巧克力）',
+   w:[['京都車站大樓 1F おみやげ小路 京小町','京都駅 おみやげ小路 京小町','和 HOHO 焙茶在同一區']]}
+];
+
 const MARKETS = [
   {h:'京都・五條（11/15 – 11/19 住琥珀附近）',l:[
     {n:'スーパーフレスコ 五条大橋店',hr:'24 小時營業',g:'GZ1JgkWKKT1gU6cdA'},
@@ -530,7 +556,8 @@ function item(x, isNow){
     body = flightCard(x.fl) + (x.n?`<div class="note" style="padding:6px 4px 0">${esc(x.n)}</div>`:'');
   } else {
     const p = (x.p||[]).map(v => chip(v, x.nav)).join('');
-    const l = (x.links||[]).map(([a,u]) => `<a class="chip" href="${esc(u)}" target="_blank" rel="noopener">🔗 ${esc(a)}</a>`).join('');
+    const l = (x.links||[]).map(([a,u]) => `<a class="chip" href="${esc(u)}" target="_blank" rel="noopener">🔗 ${esc(a)}</a>`).join('')
+      + (x.go ? `<button class="chip" style="cursor:pointer;font:inherit;font-size:13px" data-go="${esc(x.go[1])}">${esc(x.go[0])}</button>` : '');
     body = `<div class="ti">${x.tag?`<span class="tag">${esc(x.tag)}</span>`:''}<span class="kind">${KIND[x.k]}</span>${esc(x.ti)}</div>
       ${x.n?`<div class="note">${esc(x.n)}</div>`:''}
       ${x.imp?`<div class="imp">${esc(x.imp)}</div>`:''}
@@ -577,14 +604,26 @@ function renderHotels(){
     <div class="flights2">${f.map(flightCard).join('')}</div>
     <div class="alert"><div class="ic">⏰</div><div><b>出發去機場時間</b><small>11/15（日）05:30 從家開車出發往桃園機場（約 1 小時）<br>11/23（一）07:40 前退房，步行至 OCAT 搭 08:00 利木津巴士</small></div></div>
     ${HOTELS.map(h=>`<div class="hotel"><div class="nm">${esc(h.n)}</div><div class="meta">${esc(h.area)}｜${esc(h.d)}<br>${esc(h.r)}</div><div class="chips"><a class="chip" href="${G(h.g)}" target="_blank" rel="noopener"><span class="pin">📍</span>Google 地圖</a><a class="chip nav k-hotel" href="${G(h.g)}" target="_blank" rel="noopener"><span class="pin">🧭</span>導航</a></div>${secBox('訂房資料', h.sec)}</div>`).join('')}
-    <div class="daynav"><button data-go="${DAYS.length-1}">← 最後一天</button><button data-go="market">超市 →</button></div>`;
+    <div class="daynav"><button data-go="${DAYS.length-1}">← 最後一天</button><button data-go="gift">伴手禮 →</button></div>`;
+}
+
+function renderGifts(){
+  document.getElementById('main').innerHTML = `
+    <section class="dayhead"><div class="n">SOUVENIRS</div><h2>伴手禮清單</h2><div class="sum">11/15（日）晚上在京都車站一次買齊；點 📍 開啟 Google 地圖</div></section>
+    <div class="alert"><div class="ic">🎁</div><div><b>11/15 18:50–19:40 京都車站</b><small>JR 京都伊勢丹 B1F（満月）→ 京都車站大樓 1F 京小町（HOHO、KNOU）→ 八条口（マールブランシュ）<br>伊勢丹 20:00 關門，先去伊勢丹</small></div></div>
+    ${GIFTS.map(g=>`<div class="hotel gift${g.done?' done':''}">
+      <div class="nm">${esc(g.n)}${g.done?` <span class="imp" style="margin:0 0 0 6px">✓ ${esc(g.done)}</span>`:''}</div>
+      <div class="meta">${esc(g.item)}</div>
+      ${g.w.map(([l,q,note])=>`<div class="where"><a class="chip" href="${esc(searchUrl(q))}" target="_blank" rel="noopener"><span class="pin">📍</span>${esc(l)}</a>${note?`<div class="hr">${esc(note)}</div>`:''}</div>`).join('')}
+    </div>`).join('')}
+    <div class="daynav"><button data-go="hotels">← 住宿・航班</button><button data-go="market">超市 →</button></div>`;
 }
 
 function renderMarkets(){
   document.getElementById('main').innerHTML = `
     <section class="dayhead"><div class="n">SUPERMARKET</div><h2>超市</h2><div class="sum">依住宿地點整理，點 📍 開啟 Google 地圖</div></section>
     ${MARKETS.map(g=>`<div class="info market"><div class="grp"><h4>${esc(g.h)}</h4>${g.l.map(shop).join('')}</div></div>`).join('')}
-    <div class="daynav"><button data-go="hotels">← 住宿・航班</button><button data-go="0">回到第一天</button></div>`;
+    <div class="daynav"><button data-go="gift">← 伴手禮</button><button data-go="0">回到第一天</button></div>`;
 }
 
 const tabs = document.getElementById('tabs');
@@ -592,13 +631,14 @@ function renderTabs(cur){
   const today = jstNow().date;
   tabs.innerHTML = DAYS.map((d,i)=>`<button class="tab${cur===i?' on':''}${d.items.some(x=>x.k==='flight')?' has-flight':''}" data-go="${i}"><span class="d">${d.md}</span><span class="w">週${d.wd}</span>${d.date===today?'<span class="today">今天</span>':''}</button>`).join('')
     + `<button class="tab${cur==='hotels'?' on':''}" data-go="hotels"><span class="d">🏨</span><span class="w">住宿航班</span></button>`
+    + `<button class="tab${cur==='gift'?' on':''}" data-go="gift"><span class="d">🎁</span><span class="w">伴手禮</span></button>`
     + `<button class="tab${cur==='market'?' on':''}" data-go="market"><span class="d">🛒</span><span class="w">超市</span></button>`;
   const on = tabs.querySelector('.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest'});
 }
 function go(key, push=true){
-  const k = (key==='hotels'||key==='market') ? key : Math.max(0, Math.min(DAYS.length-1, +key||0));
+  const k = ['hotels','gift','market'].includes(key) ? key : Math.max(0, Math.min(DAYS.length-1, +key||0));
   renderTabs(k);
-  if(k==='hotels') renderHotels(); else if(k==='market') renderMarkets(); else renderDay(k);
+  if(k==='hotels') renderHotels(); else if(k==='gift') renderGifts(); else if(k==='market') renderMarkets(); else renderDay(k);
   if(push) history.replaceState(null,'', typeof k==='string' ? '#'+k : '#day'+(k+1));
   window.scrollTo({top:0});
   const now = document.querySelector('.it.now');
@@ -611,6 +651,7 @@ function initial(){
   const h = location.hash;
   if(h==='#hotels') return 'hotels';
   if(h==='#market') return 'market';
+  if(h==='#gift') return 'gift';
   const m = /^#day(\d)$/.exec(h); if(m) return +m[1]-1;
   const i = DAYS.findIndex(d => d.date === jstNow().date);
   return i >= 0 ? i : 0;
