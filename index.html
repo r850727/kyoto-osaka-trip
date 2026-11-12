@@ -727,7 +727,11 @@ function go(key, push=true){
 document.addEventListener('toggle', e => {
   const d = e.target; if(!d.open || !d.classList.contains('pic')) return;
   const img = d.querySelector('img[data-src]'); if(!img) return;
-  img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'),{className:'hr',textContent:'圖片載入失敗，請點下方「圖片來源」查看'})); };
+  const rel = img.dataset.src;
+  img.onerror = () => {
+    /* 相對路徑（img/…）在預覽或離線開啟時會失敗，改從正式網站載入 */
+    if(!img.dataset.retry && !/^(https?|data):/.test(rel)){ img.dataset.retry = 1; img.src = 'https://r850727.github.io/kyoto-osaka-trip/' + rel; return; }
+    img.replaceWith(Object.assign(document.createElement('div'),{className:'hr',textContent:'圖片載入失敗，請點下方「圖片來源」查看'})); };
   img.src = img.dataset.src; img.removeAttribute('data-src');
 }, true);
 document.addEventListener('click', e => {
