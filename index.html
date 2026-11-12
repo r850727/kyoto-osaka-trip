@@ -569,6 +569,23 @@ const MARKETS = [
     {n:'LIFE 中央廣場 難波店',hr:'09:00–24:00',g:'LigCpRRP1uXfP68j7'}]}
 ];
 
+/* 藥妝：要買的品項，價格為 Amazon 參考價（含稅） */
+const DRUGS = [
+  {n:'エビオス錠 2000錠',c:'指定医薬部外品｜胃腸・栄養補給',amz:2800},
+  {n:'アリナミンメディカルゴールド 180錠',c:'第3類医薬品',amz:7559},
+  {n:'強力わかもと 1000錠',c:'指定医薬部外品',amz:2481},
+  {n:'ヘパリーゼプラスII 180錠',c:'第3類医薬品',amz:4318},
+  {n:'わかもと整腸薬 240錠',c:'指定医薬部外品',amz:2200},
+  {n:'アリナミンEXプラス 270錠',c:'第3類医薬品',amz:5727},
+  {n:'パブロンゴールドA〈微粒〉44包',c:'指定第2類医薬品',amz:2150}
+];
+const DRUG_STORES = [
+  {n:'OS Drug 天滿店',hr:'11/19（四）16:15–17:10｜天神橋筋商店街 4 丁目，19:45 關門，只收現金',g:'bbqjNt3o25ykTZ3KA'},
+  {n:'OS Drug 新船場店',hr:'11/19（四）17:30–18:00｜近本町站，18:45 關門，只收現金',g:'ooxB3AFmNxgNPe6V9'},
+  {n:'OS Drug 心齋橋店',hr:'11/21（六）17:00–18:05 順路｜19:50 關門，只收現金',g:'PUo3XNE4nCMjDL4W6'}
+];
+const yen = v => '¥' + v.toLocaleString('ja-JP');
+
 /* ---------- render ---------- */
 const KIND = {airport:'出發',flight:'航班',move:'交通',spot:'景點',food:'用餐',hotel:'住宿',rest:'休息'};
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -669,7 +686,22 @@ function renderMarkets(){
   document.getElementById('main').innerHTML = `
     <section class="dayhead"><div class="n">SUPERMARKET</div><h2>超市</h2><div class="sum">依住宿地點整理，點 📍 開啟 Google 地圖</div></section>
     ${MARKETS.map(g=>`<div class="info market"><div class="grp"><h4>${esc(g.h)}</h4>${g.l.map(shop).join('')}</div></div>`).join('')}
-    <div class="daynav"><button data-go="gift">← 伴手禮</button><button data-go="0">回到第一天</button></div>`;
+    <div class="daynav"><button data-go="gift">← 伴手禮</button><button data-go="drug">藥妝 →</button></div>`;
+}
+
+function renderDrugs(){
+  const total = DRUGS.reduce((a,d)=>a+d.amz,0);
+  const amzUrl = q => 'https://www.amazon.co.jp/s?k=' + encodeURIComponent(q);
+  document.getElementById('main').innerHTML = `
+    <section class="dayhead"><div class="n">DRUGSTORE</div><h2>藥妝清單</h2><div class="sum">${DRUGS.length} 項｜價格是 Amazon 參考價，店裡比較便宜再買</div></section>
+    <div class="alert"><div class="ic">💊</div><div><b>Amazon 參考價合計 ${yen(total)}</b><small>OS Drug 只收現金，記得先領好日幣<br>同一家店消耗品滿 ¥5,000（未稅）可退稅，要帶護照</small></div></div>
+    <div class="hotel gift">
+      <div class="nm">要買的藥妝</div>
+      ${DRUGS.map(d=>`<div class="where"><div class="nm2">💊 ${esc(d.n)}</div><div class="hr">${esc(d.c)}｜Amazon ${yen(d.amz)}　<a href="${esc(amzUrl(d.n))}" target="_blank" rel="noopener">Amazon 查價</a></div></div>`).join('')}
+      <div class="where"><div class="nm2">合計 ${yen(total)}</div></div>
+    </div>
+    <div class="info market"><div class="grp"><h4>行程中順路的藥妝店</h4>${DRUG_STORES.map(shop).join('')}</div></div>
+    <div class="daynav"><button data-go="market">← 超市</button><button data-go="0">回到第一天</button></div>`;
 }
 
 const tabs = document.getElementById('tabs');
@@ -678,13 +710,14 @@ function renderTabs(cur){
   tabs.innerHTML = DAYS.map((d,i)=>`<button class="tab${cur===i?' on':''}${d.items.some(x=>x.k==='flight')?' has-flight':''}" data-go="${i}"><span class="d">${d.md}</span><span class="w">週${d.wd}</span>${d.date===today?'<span class="today">今天</span>':''}</button>`).join('')
     + `<button class="tab${cur==='hotels'?' on':''}" data-go="hotels"><span class="d">🏨</span><span class="w">住宿航班</span></button>`
     + `<button class="tab${cur==='gift'?' on':''}" data-go="gift"><span class="d">🎁</span><span class="w">伴手禮</span></button>`
-    + `<button class="tab${cur==='market'?' on':''}" data-go="market"><span class="d">🛒</span><span class="w">超市</span></button>`;
+    + `<button class="tab${cur==='market'?' on':''}" data-go="market"><span class="d">🛒</span><span class="w">超市</span></button>`
+    + `<button class="tab${cur==='drug'?' on':''}" data-go="drug"><span class="d">💊</span><span class="w">藥妝</span></button>`;
   const on = tabs.querySelector('.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest'});
 }
 function go(key, push=true){
-  const k = ['hotels','gift','market'].includes(key) ? key : Math.max(0, Math.min(DAYS.length-1, +key||0));
+  const k = ['hotels','gift','market','drug'].includes(key) ? key : Math.max(0, Math.min(DAYS.length-1, +key||0));
   renderTabs(k);
-  if(k==='hotels') renderHotels(); else if(k==='gift') renderGifts(); else if(k==='market') renderMarkets(); else renderDay(k);
+  if(k==='hotels') renderHotels(); else if(k==='gift') renderGifts(); else if(k==='market') renderMarkets(); else if(k==='drug') renderDrugs(); else renderDay(k);
   if(push) history.replaceState(null,'', typeof k==='string' ? '#'+k : '#day'+(k+1));
   window.scrollTo({top:0});
   const now = document.querySelector('.it.now');
@@ -705,6 +738,7 @@ function initial(){
   if(h==='#hotels') return 'hotels';
   if(h==='#market') return 'market';
   if(h==='#gift') return 'gift';
+  if(h==='#drug') return 'drug';
   const m = /^#day(\d)$/.exec(h); if(m) return +m[1]-1;
   const i = DAYS.findIndex(d => d.date === jstNow().date);
   return i >= 0 ? i : 0;
