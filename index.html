@@ -396,11 +396,12 @@ const DAYS = [
     {t:'16:25',e:'16:55',k:'food',ti:'姫路タコピィ（明石燒）',n:'姬路站地下街，先吃少一點',p:[['姫路タコピィ',G('zNsFDAx6ucoxbzyg8')]]},
     {t:'16:55',e:'18:00',k:'food',ti:'晚餐：お好み焼 ボナンザ（御好燒）',n:'16:55 排隊，17:00 開門',p:[['ボナンザ',G('gGMKSU4n8ACV96sy6')]]},
     {t:'18:15',e:'19:20',k:'move',ti:'姬路站 → JR 新快速 → JR 大阪站（東梅田）',p:[['JR 大阪站','大阪駅']],nav:1},
-    {t:'19:20',e:'20:00',k:'spot',opt:1,ti:'備選：梅北公園（うめきた公園）散步、梅田逛街',n:'可去可不去；公園就在 JR 大阪站北側，下車直接走過去，晚上散步看夜景\n百貨多半 20:00 關，11/22 還會再來',p:[['梅北公園',G('TNqNvxbAoGfxWRqY6')],['梅田','梅田 大阪']]},
-    {t:'~20:00',k:'move',ti:'東梅田 → 谷町線 → 谷町四丁目',n:'約 20 分鐘',p:[HOTEL_TANI],nav:1},
+    {t:'19:20',e:'20:15',k:'spot',ti:'Bandai Namco Cross Store 大阪梅田（HEP FIVE）',n:'JR 大阪站步行約 8 分鐘，在有紅色摩天輪的 HEP FIVE；HEP FIVE 營業到 21:00（出發前再確認）\n時間夠可順路去梅北公園（うめきた公園）散步看夜景，公園在 JR 大阪站北側',p:[['Bandai Namco Cross Store 大阪梅田',G('bNFKEGAFVAb2cbxc6')],['梅北公園',G('TNqNvxbAoGfxWRqY6')]]},
+    {t:'~20:15',k:'move',ti:'HEP FIVE → 步行 → 東梅田 → 谷町線 → 谷町四丁目',n:'步行約 5 分鐘到東梅田，車程約 20 分鐘',p:[HOTEL_TANI],nav:1},
     {t:'晚上',k:'rest',ti:'飯店休息'}
   ],
   info:[
+    {h:'逛街・梅田',l:[{n:'Bandai Namco Cross Store 大阪梅田（HEP FIVE）',hr:'HEP FIVE 11:00–21:00',g:'bNFKEGAFVAb2cbxc6'}]},
     {h:'美食・姬路',l:[
       {n:'Bakery 燈 Lamp',hr:'10:00–18:00｜週四公休',g:'QYupeZCVP339Ed4m9',gr:'4.3',tb:'hyogo/A2805/A280501/28026604',tr:'3.64'},
       {n:'立ち喰い寿司 魚路（壽司）',hr:'11:30–14:00；17:00–21:00｜週日公休',g:'PijycgKJuRdAAkbRA',gr:'4.4',tb:'hyogo/A2805/A280501/28036006',tr:'3.54'},
@@ -422,7 +423,7 @@ const DAYS = [
     {t:'12:50',e:'13:50',k:'spot',ti:'天王寺 逛街',n:'不上阿倍野 HARUKAS 展望台',p:[['阿倍野 HARUKAS','あべのハルカス'],['天王寺 MIO','天王寺ミオ']],links:[['HARUKAS 介紹','https://tw.wamazing.com/media/article/a-1042/']]},
     {t:'13:50',e:'14:50',k:'spot',ti:'天王寺公園（Ten-Shiba）→ 新世界・通天閣',n:'通天閣只看外觀',p:[['Ten-Shiba','てんしば'],['通天閣','通天閣']]},
     {t:'14:50',e:'15:05',k:'move',ti:'動物園前站 → 御堂筋線 → 難波站',n:'2 站、約 4 分鐘',p:[['動物園前站','動物園前駅'],['難波站','なんば駅 御堂筋線']],nav:1},
-    {t:'15:05',e:'16:20',k:'spot',ti:'難波逛街：難波 CITY（Workman、mont-bell 難波城市店）',n:'備選：おはぎ 玉製家（可能已賣完）',p:[['難波 CITY','なんばCITY'],['mont-bell 難波城市店',G('KfHdNcAQnC4kcaer5')],['備選：おはぎ 玉製家',G('HKPPHrqSpBVyQ5s3A')]]},
+    {t:'15:05',e:'16:20',k:'spot',ti:'難波逛街：難波 CITY（Workman、mont-bell 難波城市店）、買可麗露',n:'伴手禮：CANELÉ du JAPON 長堀店（可麗露）在長堀橋附近，難波 CITY 步行約 15 分鐘；11:00–19:00\n備選：おはぎ 玉製家（可能已賣完）',go:['看伴手禮清單','gift'],p:[['難波 CITY','なんばCITY'],['mont-bell 難波城市店',G('KfHdNcAQnC4kcaer5')],['CANELÉ du JAPON 長堀店',G('N29anZB7LXmW8RU7A')],['備選：おはぎ 玉製家',G('HKPPHrqSpBVyQ5s3A')]]},
     {t:'16:20',e:'16:50',k:'spot',ti:'御堂筋難波段 拍銀杏 → 道頓堀逛街',imp:'約 16:50 日落，銀杏趁天黑前拍',p:[['道頓堀','道頓堀']]},
     {t:'16:50',e:'17:05',k:'food',ti:'外帶：サロン・ド・テ アルション 法善寺本店（蛋糕）',n:'道頓堀南側、法善寺橫丁旁；週末 11:00–20:00，不定休\n買回飯店吃；要帶約 1.5 小時，請店家放保冷劑（保冷剤をお願いします）',imp:'回飯店先放房間冰箱，晚餐後 21:20 當甜點',p:[['アルション 法善寺本店',G('JrZ6puPGVQPnrR1t5')]]},
     {t:'17:05',e:'18:05',k:'spot',ti:'御堂筋銀杏大道 散步 → 心齋橋（HOKA、PARCO、OS Drug）→ 一路走到本町',n:'天黑後看御堂筋點燈；順路逛 HOKA 大阪心齋橋店、心齋橋 PARCO\n藥妝：OS Drug 心齋橋店（心齋橋站步行約 2 分鐘，近長堀地下街出入口；19:50 關門，只收現金）',imp:'⏰ 18:05 前到本町站',p:[['御堂筋','御堂筋 心斎橋'],['心齋橋','心斎橋筋商店街'],['HOKA 大阪心齋橋店',G('eSncbcgVTnoJ8TSF8')],['心齋橋 PARCO',G('6fcsifJmEbmPDk4KA')],['OS Drug 心齋橋店',G('PUo3XNE4nCMjDL4W6')],['本町站','本町駅']]},
@@ -441,7 +442,7 @@ const DAYS = [
       {n:'ブーランジュリー タカギ（麵包店）',hr:'08:00–18:00｜週一、日公休',g:'QrdFRDXXu8buL6xF6',gr:'4.0',tb:'osaka/A2701/A270102/27002376',tr:'3.74'},
       {n:'おはぎ 玉製家（紅豆麻糬）',hr:'14:00–18:30｜週三、四、日公休',g:'HKPPHrqSpBVyQ5s3A',gr:'4.2',tb:'osaka/A2701/A270202/27001576',tr:'3.76'},
       {n:'鳥貴族 本町店',hr:'17:00–01:00｜已預約 19:00 吃到飽',g:'4zm6xMYoB79SWAEA7'}]},
-    {h:'伴手禮',l:[{n:'CANELÉ du JAPON 長堀店（可麗露）',g:'N29anZB7LXmW8RU7A'}]}
+    {h:'伴手禮',l:[{n:'CANELÉ du JAPON 長堀店（可麗露）',hr:'11:00–19:00｜11/21 難波逛街時買',g:'N29anZB7LXmW8RU7A'}]}
   ]
 },
 {
@@ -460,7 +461,7 @@ const DAYS = [
     {t:'15:15',e:'15:45',k:'move',ti:'北濱站 → 堺筋線（直通阪急千里線）→ 淡路站 → Workman Plus',imp:'要搭直通阪急的班次',n:'車程約 13 分鐘；阪急淡路東口步行 10 分鐘',p:[['Workman Plus 東淀川菅原店',G('n7QkGy7G43RvJHE38')]],nav:1},
     {t:'15:45',e:'16:55',k:'spot',ti:'Workman Plus 東淀川菅原店',n:'11/21 在難波 CITY 買齊的話可跳過，從北濱直接去梅田',p:[['Workman Plus',G('n7QkGy7G43RvJHE38')]]},
     {t:'16:55',e:'17:20',k:'move',ti:'阪急淡路站 → 阪急京都線 → 大阪梅田站',n:'一班車直達，約 10 分鐘；或 JR 淡路站 → JR おおさか東線 → 大阪站',p:[['阪急 大阪梅田站','大阪梅田駅 阪急']],nav:1},
-    {t:'17:20',e:'18:05',k:'spot',ti:'梅田商圈逛街',n:'先逛無印良品和 UNIQLO UMEDA（LINKS UMEDA 內）；阪急百貨、LUCUA、Grand Front Osaka、Bandai Namco Cross Store',imp:'⏰ 18:05 前離開梅田',p:[['UNIQLO UMEDA（LINKS UMEDA）',G('hjm6ntGgJYUuEz7H8')],['阪急百貨','阪急うめだ本店'],['LUCUA','ルクア大阪'],['Grand Front Osaka','グランフロント大阪'],['梅北公園',G('TNqNvxbAoGfxWRqY6')],['Bandai Namco Cross Store 大阪梅田',G('bNFKEGAFVAb2cbxc6')]]},
+    {t:'17:20',e:'18:05',k:'spot',ti:'梅田商圈逛街',n:'先逛無印良品和 UNIQLO UMEDA（LINKS UMEDA 內）；阪急百貨、LUCUA、Grand Front Osaka',imp:'⏰ 18:05 前離開梅田',p:[['UNIQLO UMEDA（LINKS UMEDA）',G('hjm6ntGgJYUuEz7H8')],['阪急百貨','阪急うめだ本店'],['LUCUA','ルクア大阪'],['Grand Front Osaka','グランフロント大阪'],['梅北公園',G('TNqNvxbAoGfxWRqY6')]]},
     {t:'18:05',e:'18:25',k:'move',ti:'梅田站 → 御堂筋線 → 難波站 → 步行回飯店',n:'4 站、約 9 分鐘；出站往西側（JR 難波方向）',p:[HOTEL_APA],nav:1},
     {t:'18:25',e:'18:35',k:'hotel',ti:'回飯店：領取寄放的行李、進房放行李和戰利品',n:'15:00 後就能進房',p:[HOTEL_APA]},
     {t:'18:35',e:'18:50',k:'move',ti:'飯店 → 步行 → 鮨難波中',imp:'18:50 抵達，比訂位時間提早 10 分鐘',p:[['鮨難波中',G('DQGnj8LcTFboSpnN7')]],nav:1},
@@ -552,7 +553,11 @@ const GIFT_AREAS = [
      {n:'ヒガシマル 牡蠣だし醤油 400ml',img:IMG.OYSTER,item:'官網 ¥451（含稅）｜液體要放託運行李'},
      {n:'パイン パインアメ（大阪鳳梨糖）',img:IMG.PINE,item:'大阪老牌鳳梨硬糖'},
      {n:'くらこん 塩こんぶ（鹽昆布）',img:['img/shiokombu.jpg','https://honichi.com/goods/items/de48adf6-3693-42a8-bc9f-41b0a16c372a/','くらこん 塩こんぶ 大 47g'],item:'超市常見的鹽昆布；拌飯、做飯糰、炒菜都好用'}]},
-  {h:'⑥ 其他備選',when:'',note:'',
+  {h:'⑥ CANELÉ du JAPON 長堀店（可麗露）',when:'11/21（六）15:05 – 16:20 難波逛街時',note:'長堀橋附近，難波 CITY 步行約 15 分鐘；11:00–19:00',
+   maps:[['CANELÉ du JAPON 長堀店',G('N29anZB7LXmW8RU7A')]],
+   items:[
+     {n:'CANELÉ du JAPON 可麗露（カヌレ）',item:'大阪的可麗露專賣店，有多種口味；買之前問店員保存期限，11/23 回國帶得回去再多買'}]},
+  {h:'⑦ 其他備選',when:'',note:'',
    maps:[['阿闍梨餅本舗 満月 本店',G('c8xGfc13aYEj4k2x7')],['中村藤吉本店 京都駅店','中村藤吉本店 京都駅店']],
    items:[
      {n:'満月 本店 阿闍梨餅',img:IMG.AJARI,item:'11/19（四）早上備選，出町柳附近'},
