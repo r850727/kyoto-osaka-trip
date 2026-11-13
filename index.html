@@ -212,6 +212,7 @@ const PRICE = {
 const DAYS = [
 {
   date:'2026-11-15', md:'11/15', wd:'日', title:'抵達關西 → 京都', sum:'關西機場、京都、飯店、京都車站',
+  icoca:{nd:'11/16（一）',amt:'¥1,000',why:'公車、地鐵各幾段',extra:'今天在關西機場領完 HARUKA 票後，先把 ICOCA 儲值好'},
   stay:HOTEL_KYOTO,
   alert:{ic:'🚗', time:'05:30', head:'從家出發前往桃園機場 第一航廈', sub:'開車約 1 小時；早餐在機場解決'},
   items:[
@@ -244,6 +245,7 @@ const DAYS = [
 },
 {
   date:'2026-11-16', md:'11/16', wd:'一', title:'東山名剎巡禮', sum:'清水寺、青蓮院、知恩院、八坂神社、建仁寺、錦天滿宮、木屋町通',
+  icoca:{nd:'11/17（二）',amt:'¥1,000',why:'JR 奈良線到宇治、京阪回清水五條',extra:''},
   stay:HOTEL_KYOTO,
   items:[
     {t:'06:30',k:'move',ti:'飯店 → 河原町五条 → 市巴士 80 號 → 清水道',p:[['河原町五条 巴士站','河原町五条 バス停'],['清水道 巴士站','清水道 バス停']],nav:1},
@@ -273,6 +275,7 @@ const DAYS = [
 },
 {
   date:'2026-11-17', md:'11/17', wd:'二', title:'東寺・宇治・伏見', sum:'東寺、平等院鳳凰堂、朝霧橋、宇治上神社、伏見',
+  icoca:{nd:'11/18（三）',amt:'¥1,500',why:'京阪、地鐵、公車',extra:''},
   stay:HOTEL_KYOTO,
   items:[
     {t:'08:00',k:'move',ti:'飯店 → 東寺',p:['東寺'],nav:1},
@@ -303,6 +306,7 @@ const DAYS = [
 },
 {
   date:'2026-11-18', md:'11/18', wd:'三', title:'稻荷・二條城・南禪寺', sum:'伏見稻荷大社、東福寺(備選)、二條城、南禪寺、永観堂、松寿軒',
+  icoca:{nd:'11/19（四）',amt:'¥2,000',why:'京阪到出町柳、京都 → 大阪、大阪地鐵',extra:''},
   stay:HOTEL_KYOTO,
   items:[
     {t:'06:30',k:'move',ti:'飯店 → 清水五条站 → 京阪本線 → 伏見稻荷站',p:[['伏見稻荷站','伏見稲荷駅']],nav:1},
@@ -340,6 +344,7 @@ const DAYS = [
 },
 {
   date:'2026-11-19', md:'11/19', wd:'四', title:'告別京都 → 大阪', sum:'下鴨神社、三十三間堂、東本願寺、西本願寺、大阪天滿宮、大阪城周邊',
+  icoca:{nd:'11/20（五）',amt:'¥4,000',why:'姬路來回 JR 約 ¥3,000，加地鐵',extra:'明天最貴，今晚一定要先儲值'},
   stay:HOTEL_TANI,
   items:[
     {t:'08:00',k:'hotel',ti:'退房（行李寄放飯店）',p:[HOTEL_KYOTO]},
@@ -385,6 +390,7 @@ const DAYS = [
 },
 {
   date:'2026-11-20', md:'11/20', wd:'五', title:'姬路一日遊', sum:'姬路城、好古園',
+  icoca:{nd:'11/21（六）',amt:'¥1,000',why:'大阪地鐵 3–4 段',extra:''},
   stay:HOTEL_TANI,
   items:[
     {t:'06:30',e:'09:30',k:'food',ti:'早餐：飯店早餐（13F）'},
@@ -413,6 +419,7 @@ const DAYS = [
 },
 {
   date:'2026-11-21', md:'11/21', wd:'六', title:'天王寺・難波・御堂筋', sum:'四天王寺古董市集、天王寺、通天閣、道頓堀、御堂筋銀杏大道、本町',
+  icoca:{nd:'11/22（日）',amt:'¥1,500',why:'地鐵、堺筋線直通阪急、阪急京都線',extra:''},
   stay:HOTEL_TANI,
   items:[
     {t:'06:30',e:'09:30',k:'food',ti:'早餐：飯店早餐（13F）'},
@@ -447,6 +454,7 @@ const DAYS = [
 },
 {
   date:'2026-11-22', md:'11/22', wd:'日', title:'大阪城・中之島・梅田', sum:'大阪城公園、中之島、大阪中之島美術館、Workman、梅田、難波',
+  icoca:{nd:'11/23（一）',amt:'¥1,500',why:'利木津巴士 ¥1,400（要刷卡的話）',extra:'回國前剩下的餘額可以在便利商店花掉'},
   stay:HOTEL_APA,
   items:[
     {t:'06:30',e:'09:30',k:'food',ti:'早餐：飯店早餐（13F）'},
@@ -658,12 +666,14 @@ function renderDay(i){
   }
   const stay = d.stay ? `<a class="stay" href="${esc(d.stay[1])}" target="_blank" rel="noopener">🏨 住：${esc(d.stay[0])}</a>` : '';
   const alert = d.alert ? `<div class="alert"><div class="ic">${d.alert.ic}</div><div><div class="big">${d.alert.time}</div><b>${esc(d.alert.head)}</b><small>${esc(d.alert.sub)}</small></div></div>` : '';
+  const ic = d.icoca ? `<div class="alert"><div class="ic">💳</div><div><b>離開車站前確認 ICOCA 餘額</b><small>明天 ${esc(d.icoca.nd)}：${esc(d.icoca.why)}，每人至少留 ${esc(d.icoca.amt)}<br>不夠就在車站售票機儲值（只收現金）${d.icoca.extra?'<br>'+esc(d.icoca.extra):''}</small></div></div>` : '';
   const info = d.info ? `<details class="info"><summary>當日備用資訊（超市・美食・伴手禮）</summary>${d.info.map(g=>`<div class="grp"><h4>${esc(g.h)}</h4>${g.l.map(shop).join('')}</div>`).join('')}</details>` : '';
   document.getElementById('main').innerHTML = `
     <section class="dayhead"><div class="n">DAY ${i+1} · ${d.md}（${d.wd}）</div><h2>${esc(d.title)}</h2><div class="sum">${esc(d.sum)}</div>${stay}</section>
     ${alert}
     <div class="legend">${['move','spot','food','hotel'].map(k=>`<span class="k-${k}"><i></i>${KIND[k]}</span>`).join('')}<span>📍 地圖位置　🧭 大眾運輸導航</span></div>
     <ol class="tl">${d.items.map((x,j)=>item(x, j===nowIdx)).join('')}</ol>
+    ${ic}
     ${info}
     <div class="daynav"><button ${i===0?'disabled':''} data-go="${i-1}">← 前一天</button><button data-go="${i+1<DAYS.length?i+1:'hotels'}">${i+1<DAYS.length?'後一天 →':'住宿・航班 →'}</button></div>`;
 }
