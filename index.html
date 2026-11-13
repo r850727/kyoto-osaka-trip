@@ -78,6 +78,9 @@ nav.tabs{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg)
 .alert b{display:block;font-size:16px}
 .alert .big{font-size:26px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
 .alert small{color:var(--muted);display:block;margin-top:2px}
+.alert.bal{background:var(--accent-soft);border:2px solid var(--accent)}
+.alert.bal .amt{font-size:15px;font-weight:700;color:var(--accent);margin-top:2px}
+.alert.bal .amt span{font-size:32px;font-variant-numeric:tabular-nums;line-height:1.15}
 
 /* flight card */
 .flight{background:var(--paper);border:2px solid var(--flight);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
@@ -670,7 +673,7 @@ function renderDay(i){
   }
   const stay = d.stay ? `<a class="stay" href="${esc(d.stay[1])}" target="_blank" rel="noopener">🏨 住：${esc(d.stay[0])}</a>` : '';
   const alert = d.alert ? `<div class="alert"><div class="ic">${d.alert.ic}</div><div><div class="big">${d.alert.time}</div><b>${esc(d.alert.head)}</b><small>${esc(d.alert.sub)}</small></div></div>` : '';
-  const ic = d.icoca ? `<div class="alert"><div class="ic">💳</div><div><b>離開車站前確認 ICOCA 餘額</b><small>明天 ${esc(d.icoca.nd)}：${esc(d.icoca.why)}，每人至少留 ${esc(d.icoca.amt)}<br>不夠就在車站售票機儲值（只收現金）${d.icoca.extra?'<br>'+esc(d.icoca.extra):''}</small></div></div>` : '';
+  const ic = d.icoca ? `<div class="alert bal"><div class="ic">💳</div><div><b>離開車站前確認 ICOCA 餘額</b><div class="amt">每人至少 <span>${esc(d.icoca.amt)}</span></div><small>明天 ${esc(d.icoca.nd)}：${esc(d.icoca.why)}<br>不夠就在車站售票機儲值（只收現金）${d.icoca.extra?'<br>'+esc(d.icoca.extra):''}</small></div></div>` : '';
   const info = d.info ? `<details class="info"><summary>當日備用資訊（超市・美食・伴手禮）</summary>${d.info.map(g=>`<div class="grp"><h4>${esc(g.h)}</h4>${g.l.map(shop).join('')}</div>`).join('')}</details>` : '';
   document.getElementById('main').innerHTML = `
     <section class="dayhead"><div class="n">DAY ${i+1} · ${d.md}（${d.wd}）</div><h2>${esc(d.title)}</h2><div class="sum">${esc(d.sum)}</div>${stay}</section>
