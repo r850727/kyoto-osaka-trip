@@ -506,7 +506,7 @@ const DAYS = [
     {t:'',k:'food',ti:'早餐：前一晚買好或到機場再吃'},
     {t:'07:40',k:'airport',ti:'退房 → 步行到 OCAT 大樓',n:'步行約 4 分鐘；提早到買票排隊',p:[['OCAT（近鐵難波站西口）',G('dybofwAVzFvxQAKm9')]],nav:1},
     {t:'08:00',e:'08:48',k:'move',ti:'OCAT → 利木津巴士 → 關西機場 第一航廈',n:'¥1,400；備選：下一班巴士，或南海難波站搭電車',p:[['關西機場 第一航廈','関西国際空港 第1ターミナル']],nav:1},
-    {t:'08:50',e:'11:40',k:'spot',ti:'報到、托運行李、退稅手續、安檢',n:'逛免稅店',p:[['關西機場 第一航廈','関西国際空港 第1ターミナル']]},
+    {t:'08:50',e:'11:40',k:'spot',ti:'報到、托運行李、退稅手續、安檢 → 免稅店',n:'免稅店買 Lucky Strike 香菸（出境審查後的免稅店）\n帶回台灣：年滿 20 歲，捲菸免稅 200 支（1 條），超過要走紅線申報',p:[['關西機場 第一航廈','関西国際空港 第1ターミナル']]},
     {t:'12:20',e:'14:35',k:'flight',fl:{no:'星宇 JX821',from:'KIX',fromN:'關西 第一航廈',dep:'12:20',to:'TPE',toN:'桃園 第一航廈',arr:'14:35',date:'11/23(一)'},n:'午餐：飛機餐；抵達為台灣時間'},
     {t:'',k:'move',ti:'機場 → 家'},
     {t:'晚上',k:'rest',ti:'在家休息'}
@@ -588,7 +588,7 @@ const MARKETS = [
     {n:'LIFE 中央廣場 難波店',hr:'09:00–24:00',g:'LigCpRRP1uXfP68j7'}]}
 ];
 
-/* 藥妝：要買的品項，價格為 Amazon 參考價（含稅） */
+/* 藥妝：要買的品項，價格為 Amazon 等網路參考價（含稅）；src 是價格來源，預設 Amazon */
 const DRUGS = [
   {n:'エビオス錠 2000錠',img:['img/ebios.jpg','https://www.amazon.co.jp/dp/B000FQQ7RE','Amazon 商品圖'],c:'指定医薬部外品｜胃腸・栄養補給',amz:2800},
   {n:'アリナミンメディカルゴールド 180錠',img:['img/alinamin-medical-gold.jpg','https://www.amazon.co.jp/dp/B0DT8RB99Q','Amazon 商品圖'],c:'第3類医薬品',amz:7559},
@@ -600,7 +600,8 @@ const DRUGS = [
   {n:'クオリティファースト ダーマレーザー スーパーセラミド100 マスク 5個セット',img:['img/qf-ceramide-mask.jpg','https://www.amazon.co.jp/s?k=クオリティファースト スーパーセラミド100 マスク 5個セット','Amazon 商品圖'],c:'化粧品｜保濕面膜 5 包，附 EXスーパーVC 1 片',amz:4400},
   {n:'リポピールセラム 30ml',img:['img/lipopeel-serum.jpg','https://www.amazon.co.jp/s?k=リポピールセラム 30ml','Amazon 商品圖'],c:'化粧品｜導入美容液',amz:2480},
   {n:'メラノCC Men 薬用しみ集中対策美容液 20ml',img:['img/melano-cc-men.jpg','https://www.amazon.co.jp/s?k=メラノCC Men 薬用しみ集中対策美容液','Amazon 商品圖'],c:'医薬部外品｜男用維他命 C 美容液',amz:991},
-  {n:'メンソレータム やわらか素肌クリームU 145g ×2',img:['img/mentholatum-yawaraka.jpg','https://www.amazon.co.jp/s?k=メンソレータム やわらか素肌クリームU 145g','Amazon 商品圖'],c:'第3類医薬品｜腳跟、手肘去角質乳霜，Amazon 價是 2 盒',amz:2861}
+  {n:'メンソレータム やわらか素肌クリームU 145g ×2',img:['img/mentholatum-yawaraka.jpg','https://www.amazon.co.jp/s?k=メンソレータム やわらか素肌クリームU 145g','Amazon 商品圖'],c:'第3類医薬品｜腳跟、手肘去角質乳霜，Amazon 價是 2 盒',amz:2861},
+  {n:'クリーンデンタル トータルケア 100g',img:['img/clean-dental-total-care.jpg','https://www.matsukiyococokara-online.com/store/catalog/product/view/id/4987107673930','第一三共ヘルスケア 商品圖'],c:'医薬部外品｜牙周病預防牙膏',amz:1452,src:'松本清網路'}
 ];
 const DRUG_STORES = [
   {n:'OS Drug 天滿店',hr:'11/19（四）16:15–17:10｜天神橋筋商店街 4 丁目，19:45 關門，只收現金',g:'bbqjNt3o25ykTZ3KA'},
@@ -718,11 +719,11 @@ function renderDrugs(){
   const total = DRUGS.reduce((a,d)=>a+d.amz,0);
   const amzUrl = q => 'https://www.amazon.co.jp/s?k=' + encodeURIComponent(q);
   document.getElementById('main').innerHTML = `
-    <section class="dayhead"><div class="n">DRUGSTORE</div><h2>藥妝清單</h2><div class="sum">${DRUGS.length} 項｜價格是 Amazon 參考價，店裡比較便宜再買</div></section>
-    <div class="alert"><div class="ic">💊</div><div><b>Amazon 參考價合計 ${yen(total)}</b><small>OS Drug 只收現金，記得先領好日幣<br>同一家店消耗品滿 ¥5,000（未稅）可退稅，要帶護照</small></div></div>
+    <section class="dayhead"><div class="n">DRUGSTORE</div><h2>藥妝清單</h2><div class="sum">${DRUGS.length} 項｜價格是 Amazon 等網路參考價，店裡比較便宜再買</div></section>
+    <div class="alert"><div class="ic">💊</div><div><b>網路參考價合計 ${yen(total)}</b><small>OS Drug 只收現金，記得先領好日幣<br>同一家店消耗品滿 ¥5,000（未稅）可退稅，要帶護照</small></div></div>
     <div class="hotel gift">
       <div class="nm">要買的藥妝</div>
-      ${DRUGS.map(d=>`<div class="where"><div class="nm2">💊 ${esc(d.n)}</div><div class="hr">${esc(d.c)}｜Amazon ${yen(d.amz)}　<a href="${esc(amzUrl(d.n))}" target="_blank" rel="noopener">Amazon 查價</a></div>${d.img?picBox(d.img):''}</div>`).join('')}
+      ${DRUGS.map(d=>`<div class="where"><div class="nm2">💊 ${esc(d.n)}</div><div class="hr">${esc(d.c)}｜${esc(d.src||'Amazon')} ${yen(d.amz)}　<a href="${esc(amzUrl(d.n))}" target="_blank" rel="noopener">Amazon 查價</a></div>${d.img?picBox(d.img):''}</div>`).join('')}
       <div class="where"><div class="nm2">合計 ${yen(total)}</div></div>
     </div>
     <div class="info market"><div class="grp"><h4>行程中順路的藥妝店</h4>${DRUG_STORES.map(shop).join('')}</div></div>
